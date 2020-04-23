@@ -8,7 +8,7 @@ Simublocks is a python program, made with Tkinter, for simulating dynamic system
 
 This project is still under construction.
 
-In the future, it will be available for download and use in the Python Package Index (PyPI) repository.
+In the future, it will be available for download and use in the Python Package Index (PyPI).
 
 Please feel free to contribute.
 
