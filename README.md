@@ -1,7 +1,7 @@
 # simublocks
 
 <p align="center">
-  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img1.png" width="250" />
+  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img1.png" width="800" />
 </p>
 
 Simublocks is a python program, made with Tkinter, for simulating dynamic systems.
