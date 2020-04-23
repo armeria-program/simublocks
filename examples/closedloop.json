@@ -1,0 +1,280 @@
+{
+    "name": "closedloop.json",
+    "importCode": "",
+    "blocks": {
+        "2": {
+            "name": "Sum",
+            "type": "sum",
+            "conn": [
+                {
+                    "otherblock": "SetPoint",
+                    "otherblock_n_arc": 1,
+                    "otherblock_id": 11
+                },
+                {
+                    "otherblock": "PI (SS)",
+                    "otherblock_n_arc": 0,
+                    "otherblock_id": 7
+                },
+                {
+                    "otherblock": "",
+                    "otherblock_n_arc": 1,
+                    "otherblock_id": 6
+                }
+            ],
+            "code": [
+                "+",
+                "-"
+            ],
+            "coords": [
+                228.0,
+                87.0,
+                278.0,
+                137.0
+            ]
+        },
+        "3": {
+            "name": "Sys (TF)",
+            "type": "system",
+            "conn": [
+                {
+                    "otherblock": "Sum",
+                    "otherblock_n_arc": 1,
+                    "otherblock_id": 8
+                },
+                {
+                    "otherblock": "",
+                    "otherblock_n_arc": 0,
+                    "otherblock_id": 5
+                },
+                {}
+            ],
+            "code": {
+                "type": "TF",
+                "sub_type": "continuous",
+                "self": [
+                    "[1]",
+                    "[1,2,3]"
+                ]
+            },
+            "coords": [
+                581.0,
+                62.0,
+                681.0,
+                162.0
+            ]
+        },
+        "4": {
+            "name": "",
+            "type": "corner",
+            "conn": [
+                {
+                    "otherblock": "",
+                    "otherblock_n_arc": 1,
+                    "otherblock_id": 5
+                },
+                {
+                    "otherblock": "",
+                    "otherblock_n_arc": 0,
+                    "otherblock_id": 6
+                },
+                {}
+            ],
+            "code": [
+                "top",
+                "left"
+            ],
+            "coords": [
+                755.0,
+                304.0,
+                785.0,
+                334.0
+            ]
+        },
+        "5": {
+            "name": "",
+            "type": "corner",
+            "conn": [
+                {
+                    "otherblock": "Sys (TF)",
+                    "otherblock_n_arc": 1,
+                    "otherblock_id": 3
+                },
+                {
+                    "otherblock": "",
+                    "otherblock_n_arc": 0,
+                    "otherblock_id": 4
+                },
+                {}
+            ],
+            "code": [
+                "left",
+                "bottom"
+            ],
+            "coords": [
+                754.0,
+                97.0,
+                784.0,
+                127.0
+            ]
+        },
+        "6": {
+            "name": "",
+            "type": "corner",
+            "conn": [
+                {
+                    "otherblock": "",
+                    "otherblock_n_arc": 1,
+                    "otherblock_id": 4
+                },
+                {
+                    "otherblock": "Sum",
+                    "otherblock_n_arc": 2,
+                    "otherblock_id": 2
+                },
+                {}
+            ],
+            "code": [
+                "right",
+                "top"
+            ],
+            "coords": [
+                239.0,
+                303.0,
+                269.0,
+                333.0
+            ]
+        },
+        "7": {
+            "name": "PI (SS)",
+            "type": "system",
+            "conn": [
+                {
+                    "otherblock": "Sum",
+                    "otherblock_n_arc": 1,
+                    "otherblock_id": 2
+                },
+                {
+                    "otherblock": "Sum",
+                    "otherblock_n_arc": 0,
+                    "otherblock_id": 8
+                },
+                {}
+            ],
+            "code": {
+                "type": "SS",
+                "sub_type": "discrete",
+                "self": [
+                    "[ 1 ]",
+                    "[1]",
+                    "[0.1]",
+                    "[30]"
+                ]
+            },
+            "coords": [
+                341.0,
+                62.0,
+                441.0,
+                162.0
+            ]
+        },
+        "8": {
+            "name": "Sum",
+            "type": "sum",
+            "conn": [
+                {
+                    "otherblock": "PI (SS)",
+                    "otherblock_n_arc": 1,
+                    "otherblock_id": 7
+                },
+                {
+                    "otherblock": "Sys (TF)",
+                    "otherblock_n_arc": 0,
+                    "otherblock_id": 3
+                },
+                {
+                    "otherblock": "",
+                    "otherblock_n_arc": 1,
+                    "otherblock_id": 10
+                }
+            ],
+            "code": [
+                "+",
+                "+"
+            ],
+            "coords": [
+                486.0,
+                88.0,
+                536.0,
+                138.0
+            ]
+        },
+        "10": {
+            "name": "",
+            "type": "corner",
+            "conn": [
+                {
+                    "otherblock": "Disturbance",
+                    "otherblock_n_arc": 1,
+                    "otherblock_id": 12
+                },
+                {
+                    "otherblock": "Sum",
+                    "otherblock_n_arc": 2,
+                    "otherblock_id": 8
+                },
+                {}
+            ],
+            "code": [
+                "left",
+                "top"
+            ],
+            "coords": [
+                497.0,
+                218.0,
+                527.0,
+                248.0
+            ]
+        },
+        "11": {
+            "name": "SetPoint",
+            "type": "input",
+            "conn": [
+                {},
+                {
+                    "otherblock": "Sum",
+                    "otherblock_n_arc": 0,
+                    "otherblock_id": 2
+                },
+                {}
+            ],
+            "code": "def SetPoint(t,k):\n\tif t < 25:\n\t\treturn 10\n\telse:\n\t\treturn 30\n",
+            "coords": [
+                57.0,
+                62.0,
+                157.0,
+                162.0
+            ]
+        },
+        "12": {
+            "name": "Disturbance",
+            "type": "input",
+            "conn": [
+                {},
+                {
+                    "otherblock": "",
+                    "otherblock_n_arc": 0,
+                    "otherblock_id": 10
+                },
+                {}
+            ],
+            "code": "def Disturbance(t,k):\n\tif t < 35:\n\t\treturn 0\n\telse:\n\t\treturn 100\n\n",
+            "coords": [
+                301.0,
+                184.0,
+                401.0,
+                284.0
+            ]
+        }
+    }
+}
