@@ -31,11 +31,11 @@ class editBlockDialog(object):
 
         root = self.root = Tk()
         root.resizable(0,0)
-        root.title(str("Editar Bloco ") + str(data['name']))
+        root.title(str("Edit Block: ") + str(data['name']))
         self.data = data 
 
         if data['type'] != 'corner':
-            Label(root, text="Nome:").grid(row=0, column=0)
+            Label(root, text="Name:").grid(row=0, column=0)
             self.inputName = Entry(root)
             self.inputName.insert(END, self.data['name'])
             self.inputName.grid(row=0,column=1,columnspan=2,sticky="EW")
@@ -49,10 +49,11 @@ class editBlockDialog(object):
                 self.editSystemTF(root)
             else:
                 self.editSystemSS(root)
-                        
-        Button(root, width=11, text="Editar", command=self.save_button).grid(row=4, column=0)
-        Button(root, width=11, text="Cancelar", command=self.cancel_button).grid(row=4, column=1)
-        Button(root, width=11, text="Remover Bloco", command=self.remove_button).grid(row=4, column=2)
+        
+        if data['type'] != 'corner':
+            Button(root, width=11, text="Save", command=self.save_button).grid(row=4, column=0)
+        Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=4, column=1)
+        Button(root, width=11, text="Remove Block", command=self.remove_button).grid(row=4, column=2)
         
         dialogTools.center(root)
 
@@ -116,12 +117,12 @@ class editBlockDialog(object):
         self.input4.grid(row=3, column=2)
 
     def editSum(self, root):
-        Label(root, text="Entradas:").grid(row=2, column=0)
+        Label(root, text="Input:").grid(row=2, column=0)
         code = self.data['code']
         self.twoEntries(root, code)
 
     def dropdownButton(self,root):
-        Label(root, text="Tipo:").grid(row=1, column=0)
+        Label(root, text="Type:").grid(row=1, column=0)
         self.dropdown = ttk.Combobox(root,state="readonly", values=[ "continuous",  "discrete"])
         self.dropdown.grid(row=1, column=1, columnspan=2)
         if self.data['code']['sub_type'] == "continuous":
@@ -144,7 +145,7 @@ class editBlockDialog(object):
         self.moreTwoEntries(root, code[2:])
 
     def editInput(self, root):
-        Label(root, text="Código:").grid(row=1, column=0)
+        Label(root, text="Code:").grid(row=1, column=0)
         self.inputCode = ScrolledText(root, height=7,width=50)
         self.inputCode.insert(END, self.data['code'])
         self.inputCode.grid(row=1, column=1,columnspan=2)

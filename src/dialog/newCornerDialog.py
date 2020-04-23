@@ -30,17 +30,17 @@ class newCornerDialog(object):
 
         root = self.root = Tk()
         root.resizable(0,0)
-        root.title(str("Criar uma Quina"))
-        Label(root, text="Digite top, bottom, left ou right").grid(row=0, column=0, columnspan=2)
-        Label(root, text="Entrada").grid(row=1, column=0)
+        root.title(str("Create Corner"))
+        Label(root, text="Enter: top, bottom, left or right").grid(row=0, column=0, columnspan=2)
+        Label(root, text="Input:").grid(row=1, column=0)
         self.input1 = Entry(root)
         self.input1.grid(row=1, column=1)
-        Label(root, text="Saída").grid(row=2, column=0)
+        Label(root, text="Output:").grid(row=2, column=0)
         self.input2 = Entry(root)
         self.input2.grid(row=2, column=1)
 
-        Button(root, width=11, text="Criar", command=self.save_button).grid(row=3, column=0)
-        Button(root, width=11, text="Cancelar", command=self.cancel_button).grid(row=3, column=1)
+        Button(root, width=11, text="Create", command=self.save_button).grid(row=3, column=0)
+        Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=3, column=1)
         
         dialogTools.center(root)
 

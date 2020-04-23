@@ -28,7 +28,7 @@ class newBlockDialog(object):
     def __init__(self,b1, b2,b3):
 
         root = self.root = tkinter.Tk()
-        root.title('Escolha um bloco')
+        root.title('Add new Block')
         
         # button frame
         frm_2 = tkinter.Frame(root)

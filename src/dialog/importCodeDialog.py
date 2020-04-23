@@ -30,14 +30,13 @@ class importCodeDialog(object):
 
         root = self.root = Tk()
         root.resizable(0,0)
-        root.title("Importar pacotes")
-        root.bind('<Control-c>', func=self.to_clip)
+        root.title("Import Code and Packages")
 
         self.inputCode = ScrolledText(root, height=5,width=50)
         self.inputCode.insert(END, code)
         self.inputCode.grid(row=0, column=0,columnspan=2)
-        Button(root, width=11, text="Salvar", command=self.save_button).grid(row=1, column=0)
-        Button(root, width=11, text="Cancelar", command=self.cancel_button).grid(row=1, column=1)
+        Button(root, width=11, text="Save", command=self.save_button).grid(row=1, column=0)
+        Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=1, column=1)
 
         dialogTools.center(root)
 
@@ -53,7 +52,3 @@ class importCodeDialog(object):
             'status': 'cancel'
         }
         self.root.quit()
-
-    def to_clip(self, event=None):
-        self.root.clipboard_clear()
-        self.root.clipboard_append(self.msg)
