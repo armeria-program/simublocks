@@ -12,7 +12,6 @@ In the future, it will be available for download and use in the Python Package I
 
 Please feel free to contribute.
 
-----
 ## Usage
 
 If you want to use or contribute, follow these steps:
@@ -30,7 +29,6 @@ Download and run simublocks
     foo@foo:~$ cd simublocks
     foo@foo:~$ python3 main.py 
 
-----
 ## License
 
 MIT License
