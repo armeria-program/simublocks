@@ -22,16 +22,16 @@ If you want to use or contribute, follow these steps:
 
 Install dependencies
 
-    foo@foo:~$ sudo apt install python3
-    foo@foo:~$ sudo apt install python3-pip
-    foo@foo:~$ sudo apt install python3-tk
-    foo@foo:~$ pip3 install control
+    sudo apt install python3
+    sudo apt install python3-pip
+    sudo apt install python3-tk
+    pip3 install control
 
 Download and run simublocks
 
-    foo@foo:~$ git clone https://github.com/bentoavb/simublocks.git
-    foo@foo:~$ cd simublocks
-    foo@foo:~$ python3 main.py 
+    git clone https://github.com/bentoavb/simublocks.git
+    cd simublocks
+    python3 main.py 
 
 ## License
 
