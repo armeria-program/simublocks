@@ -12,6 +12,25 @@ In the future, it will be available for download and use in the Python Package I
 
 Please feel free to contribute.
 
+----
+## Usage
+
+If you want to use or contribute, follow these steps:
+
+1. Install dependencies
+
+    foo@foo:~$ sudo apt install python3
+    foo@foo:~$ sudo apt install python3-pip
+    foo@foo:~$ sudo apt install python3-tk
+    foo@foo:~$ pip3 install control
+
+2. Download and run simublocks
+
+    foo@foo:~$ git clone https://github.com/bentoavb/simublocks.git
+    foo@foo:~$ cd simublocks
+    foo@foo:~$ python3 main.py 
+
+----
 ## License
 
 MIT License
