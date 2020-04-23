@@ -12,6 +12,10 @@ In the future, it will be available for download and use in the Python Package I
 
 Please feel free to contribute.
 
+## Dependencies
+
+The program requires the following python packages: tkinter, control, numpy, scipy and matplotlib.
+
 ## Usage
 
 If you want to use or contribute, follow these steps:
