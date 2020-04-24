@@ -32,17 +32,17 @@ class executeDialog(object):
         root.resizable(0,0)
         root.title("Run Simulation")
 
-        tk.Label(root, text="Sampling Time:").grid(row=0, column=0)
-        self.T = tk.Entry(root)
+        tk.Label(root, text="Sampling Time:").grid(row=0, column=0, pady=10, padx=10, sticky="E")
+        self.T = tk.Entry(root,width=5)
         self.T.insert(tk.END, "0.01")
-        self.T.grid(row=0,column=1,sticky="EW")
-        tk.Label(root, text="Simulation Time:").grid(row=1, column=0)
-        self.tf = tk.Entry(root)
+        self.T.grid(row=0,column=1,sticky="EW", padx=(0,10))
+        tk.Label(root, text="Simulation Time:").grid(row=1, column=0, pady=(0,10), padx=10, sticky="E")
+        self.tf = tk.Entry(root,width=5)
         self.tf.insert(tk.END, "50")
-        self.tf.grid(row=1,column=1,sticky="EW")
+        self.tf.grid(row=1,column=1,sticky="EW", padx=(0,10))
 
-        tk.Button(root, width=11, text="Run", command=self.execute_button).grid(row=2, column=0)
-        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=2, column=1)
+        tk.Button(root, width=11, text="Run", command=self.execute_button).grid(row=2, column=0, pady=(0,10), padx=10)
+        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=2, column=1, pady=(0,10), padx=(0,10))
         
         dialogTools.center(root)
 
