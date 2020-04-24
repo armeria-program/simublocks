@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-class moveTools:
+class blockTools:
     def move(self, event):
         pos = self.canvas.coords(self.self)
         w = abs(pos[2] - pos[0])
@@ -107,3 +107,19 @@ class moveTools:
             (c[2] - c[0])/2 + c[0] + 10, 
             c[3] + 10
         )
+    
+    def remove(self):
+        self.canvas.delete(self.self)
+        self.canvas.delete(self.text)
+
+    def getBlocksDict(blocks):
+        blocksDict = {}
+        for i in blocks:
+            blocksDict[i.id] = dict({
+                'name':   i.name,
+                'type':   i.type,
+                'conn':   Connection.getDict(i.conn),
+                'code':   i.code,
+                'coords': i.coords
+            })
+        return blocksDict

@@ -21,9 +21,9 @@
 # SOFTWARE.
 
 from src.element.connection import Connection
-from src.element.moveTools import moveTools
+from src.element.blockTools import blockTools
 
-class Block(moveTools):
+class Block(blockTools):
     def __init__(self, canvas, text, coords, code):
         self.canvas= canvas
         self.conn = [{ 'n_line': None },{ 'n_line': None },{ 'n_line': None }]
@@ -39,22 +39,6 @@ class Block(moveTools):
             (self.coords[2] - self.coords[0])/2 + self.coords[0],
             (self.coords[3] - self.coords[1])/2 + self.coords[1],
         ), text=text)
-
-    def remove(self):
-        self.canvas.delete(self.self)
-        self.canvas.delete(self.text)
-
-    def getBlocksDict(blocks):
-        blocksDict = {}
-        for i in blocks:
-            blocksDict[i.id] = dict({
-                'name':   i.name,
-                'type':   i.type,
-                'conn':   Connection.getDict(i.conn),
-                'code':   i.code,
-                'coords': i.coords
-            })
-        return blocksDict
     
     
 
