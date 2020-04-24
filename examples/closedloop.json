@@ -248,7 +248,7 @@
                 },
                 {}
             ],
-            "code": "def SetPoint(t,k):\n\tif t < 25:\n\t\treturn 10\n\telse:\n\t\treturn 30\n",
+            "code": "def SetPoint(t,k):\n\tif t < 10:\n\t\treturn 10\n\telse:\n\t\treturn 30\n\n",
             "coords": [
                 57.0,
                 62.0,
@@ -268,7 +268,7 @@
                 },
                 {}
             ],
-            "code": "def Disturbance(t,k):\n\tif t < 35:\n\t\treturn 0\n\telse:\n\t\treturn 10\n\n\n\n",
+            "code": "def Disturbance(t,k):\n\tif t < 20:\n\t\treturn 0\n\telse:\n\t\treturn 5\n\n\n\n\n\n\n",
             "coords": [
                 301.0,
                 184.0,
