@@ -8,6 +8,8 @@ In the future, it will be available for download and use in the Python Package I
 
 Please feel free to contribute.
 
+## Screenshots
+
 <p align="center">
   <img src="https://github.com/bentoavb/simublocks/blob/master/images/img1.png" width="800" />
 </p>
