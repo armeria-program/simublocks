@@ -18,9 +18,9 @@ Please feel free to contribute.
 </p>
 
 <p align="center">
-  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img4.png" width="250" />
-  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img5.png" width="250" />
-  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img6.png" width="250" />
+  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img4.png" height="100" />
+  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img5.png" height="100" />
+  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img6.png" height="100" />
 </p>
 
 
