@@ -17,6 +17,13 @@ Please feel free to contribute.
   <img src="https://github.com/bentoavb/simublocks/blob/master/images/img3.png" width="400" />
 </p>
 
+<p align="center">
+  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img4.png" width="250" />
+  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img5.png" width="250" />
+  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img6.png" width="250" />
+</p>
+
+
 ## Dependencies
 
 The program requires the following python packages: tkinter, control, numpy, scipy and matplotlib.
