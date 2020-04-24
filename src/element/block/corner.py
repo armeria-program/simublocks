@@ -20,79 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.element.connection import Connection
-from src.element.blockTools import blockTools
-
-class Block(blockTools):
-    def __init__(self, canvas, text, coords, code):
-        self.canvas= canvas
-        self.conn = [{ 'n_line': None },{ 'n_line': None },{ 'n_line': None }]
-        self.name = text
-        self.code = code
-        self.ss = None # Matrizes de Espaço de Estados
-        self.x = None # Vetor de Estados
-        self.u = None # Entrada do Bloco
-
-        self.coords = coords
-        self.self = canvas.create_rectangle(self.coords,fill="white")
-        self.text = canvas.create_text((
-            (self.coords[2] - self.coords[0])/2 + self.coords[0],
-            (self.coords[3] - self.coords[1])/2 + self.coords[1],
-        ), text=text)
-    
-    
-
-class System(Block):
-    def __init__(self, canvas, type, text, coords, code):
-        Block.__init__(self,canvas,text, coords, code)
-        self.type = type
-        c = self.coords
-        self._out_ = canvas.create_arc(self.right_pos(self.coords), start=-90, extent=180, fill="black")
-        self._in_ = canvas.create_arc(self.left_pos(self.coords), start=-90, extent=180, fill="black")
-
-    def moveArc(self):
-        c = self.coords
-        self.canvas.coords(self._out_, self.right_pos(self.coords))
-        self.canvas.coords(self._in_, self.left_pos(self.coords))
-
-    def remove(self):
-        Block.remove(self)
-        self.canvas.delete(self._out_)
-        self.canvas.delete(self._in_)
-
-class Input(Block):
-    def __init__(self, canvas, type, text, coords, code):
-        Block.__init__(self,canvas,text, coords, code)
-        self.type = type
-        self._out_ = canvas.create_arc(self.right_pos(self.coords), start=-90, extent=180, fill="black")
-
-    def moveArc(self):
-        self.canvas.coords(self._out_,self.right_pos(self.coords))
-    
-    def remove(self):
-        Block.remove(self)
-        self.canvas.delete(self._out_)
-
-class Sum(Block):
-    def __init__(self, canvas, type, text, coords, code):
-        Block.__init__(self,canvas,text, coords, code)
-        self.type = type
-        c = self.coords
-        self._out_ = canvas.create_arc(self.right_pos(self.coords), start=-90, extent=180, fill="black")
-        self._in_ = canvas.create_arc(self.left_pos(self.coords), start=-90, extent=180, fill="black")
-        self._in2_ = canvas.create_arc(self.bottom_pos(self.coords), start=0, extent=180, fill="black")
-
-    def moveArc(self):
-        c = self.coords
-        self.canvas.coords(self._out_, self.right_pos(self.coords))
-        self.canvas.coords(self._in_, self.left_pos(self.coords))
-        self.canvas.coords(self._in2_, self.bottom_pos(self.coords))
-
-    def remove(self):
-        Block.remove(self)
-        self.canvas.delete(self._out_)
-        self.canvas.delete(self._in_)
-        self.canvas.delete(self._in2_)
+from src.element.block.block import Block 
 
 class Corner(Block):
     def __init__(self, canvas, type, text, coords, code):
@@ -147,4 +75,3 @@ class Corner(Block):
         Block.remove(self)
         self.canvas.delete(self._out_)
         self.canvas.delete(self._in_)
-    

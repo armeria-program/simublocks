@@ -85,7 +85,7 @@ class Workspace:
                 Workspace.blocks.remove(block)
                 block.remove()
             else:
-                Dialog.alert("Alerta", "Bloco não pode ser removido pois possui conexões.")
+                Dialog.alert("Alert", "Block cannot be removed because it has connections")
         elif res['status'] == 'save':
             code = res['data']['code']
             block.name = res['data']['name']
@@ -93,7 +93,7 @@ class Workspace:
             if block.type == 'sum' and (
                 not (code[0] == '+' or  code[0] == '-') or
                 not (code[1] == '+' or  code[1] == '-')
-            ): Dialog.alert("Alerta", "Selecione somente + ou -")
+            ): Dialog.alert("Alert", "Enter just + or -")
             block.code = code  
                 
 
@@ -126,7 +126,7 @@ class Workspace:
             elif conn['status'] == 'input-output-error':
                 Workspace.canvas.itemconfig(arc, fill="black")
                 Workspace.canvas.itemconfig(Workspace.new['arc'], fill="black")
-                Dialog.alert("Alerta", "Ligue somente Sáida -> Entrada!")
+                Dialog.alert("Alert", "Ligue somente Sáida -> Entrada!")
 
             if conn['status'] != 'start_connection':
                 Workspace.new['n_arc'] = dict({'conn': None,'block': None,'n_arc': None, 'arc': None})
