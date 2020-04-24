@@ -36,7 +36,8 @@ class FileApp:
         f.write(json.dumps({
             'name': os.path.basename(f.name),
             'importCode': Workspace.importCode,
-            'blocks': Block.getBlocksDict(Workspace.blocks)
+            'blocks': Block.getBlocksDict(Workspace.blocks),
+            'graphs': Block.getBlocksDict(Workspace.graphs)
         },indent=4))
         # close file
         f.close()
@@ -63,10 +64,11 @@ class FileApp:
         # Create each block
         for i in project['blocks']:
             b = project['blocks'][i]
-            if b['type'] != "graph":
-                blocks[i] = Workspace.createBlock(b['name'],b['type'],b['coords'], b['code'])
-            else:
-                blocks[i] = Workspace.createGraph(b['name'],b['coords'], b['code'])
+            blocks[i] = Workspace.createBlock(b['name'],b['type'],b['coords'], b['code'])
+
+        for i in project['graphs']:
+            b = project['graphs'][i]
+            blocks[i] = Workspace.createGraph(b['name'],b['coords'], b['code'])
         
         Workspace.importCode = project['importCode']
 

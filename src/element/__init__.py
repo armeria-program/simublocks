@@ -81,7 +81,6 @@ class Workspace:
         Workspace.id +=1 
         block.id = Workspace.id
         Workspace.graphs.append(block)
-        Workspace.blocks.append(block)
 
         Workspace.canvas.tag_bind(block.self, '<B1-Motion>',
             lambda event: block.move(event))
@@ -98,7 +97,7 @@ class Workspace:
         })
 
         if res['status'] == 'delete':
-            Workspace.blocks.remove(block)
+            Workspace.graphs.remove(block)
             block.remove()
         elif res['status'] == 'save':
             block.code = res['code']
@@ -178,6 +177,7 @@ class Workspace:
     def clean():
         Workspace.canvas.delete('all')
         Workspace.blocks = []
+        Workspace.graphs = []
         Workspace.connections = dict()
         Workspace.id = 0
         Workspace.importCode = ''
