@@ -34,9 +34,7 @@ If you want to use or contribute, follow these steps:
 
 Install dependencies
 
-    sudo apt install python3
-    sudo apt install python3-pip
-    sudo apt install python3-tk
+    sudo apt install python3 python3-pip python3-tk
     pip3 install control
 
 Download and run simublocks
