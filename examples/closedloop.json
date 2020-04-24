@@ -53,8 +53,8 @@
                 "type": "TF",
                 "sub_type": "continuous",
                 "self": [
-                    "[1]",
-                    "[1,2,3]"
+                    "[25]",
+                    "[1,5,25]"
                 ]
             },
             "coords": [
@@ -167,8 +167,8 @@
                 "self": [
                     "[ 1 ]",
                     "[1]",
-                    "[0.1]",
-                    "[30]"
+                    "[0.05]",
+                    "[1]"
                 ]
             },
             "coords": [
@@ -268,7 +268,7 @@
                 },
                 {}
             ],
-            "code": "def Disturbance(t,k):\n\tif t < 35:\n\t\treturn 0\n\telse:\n\t\treturn 50\n\n\n",
+            "code": "def Disturbance(t,k):\n\tif t < 35:\n\t\treturn 0\n\telse:\n\t\treturn 10\n\n\n\n",
             "coords": [
                 301.0,
                 184.0,
@@ -329,9 +329,9 @@
                 {
                     "id": 10,
                     "type": "input",
-                    "legend": "",
-                    "color": "",
-                    "check": false
+                    "legend": "disturbance signal",
+                    "color": "k",
+                    "check": true
                 }
             ],
             "coords": [
