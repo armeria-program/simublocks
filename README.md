@@ -1,5 +1,13 @@
 # simublocks
 
+Simublocks is a python program, made with Tkinter, for simulating dynamic systems.
+
+This project is still under construction.
+
+In the future, it will be available for download and use in the Python Package Index (PyPI).
+
+Please feel free to contribute.
+
 <p align="center">
   <img src="https://github.com/bentoavb/simublocks/blob/master/images/img1.png" width="800" />
 </p>
@@ -8,14 +16,6 @@
   <img src="https://github.com/bentoavb/simublocks/blob/master/images/img2.png" width="400" />
   <img src="https://github.com/bentoavb/simublocks/blob/master/images/img3.png" width="400" />
 </p>
-
-Simublocks is a python program, made with Tkinter, for simulating dynamic systems.
-
-This project is still under construction.
-
-In the future, it will be available for download and use in the Python Package Index (PyPI).
-
-Please feel free to contribute.
 
 ## Dependencies
 
