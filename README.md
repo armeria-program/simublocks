@@ -4,6 +4,11 @@
   <img src="https://github.com/bentoavb/simublocks/blob/master/images/img1.png" width="800" />
 </p>
 
+<p align="center">
+  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img2.png" width="400" />
+  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img3.png" width="400" />
+</p>
+
 Simublocks is a python program, made with Tkinter, for simulating dynamic systems.
 
 This project is still under construction.
