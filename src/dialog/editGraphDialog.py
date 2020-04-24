@@ -63,9 +63,9 @@ class editGraphDialog(object):
                 })
 
         
-        tk.Button(root, width=11, text="Save", command=self.save_button).grid(row=0, column=0)
-        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=0, column=1)
-        tk.Button(root, width=11, text="Remove Block", command=self.remove_button).grid(row=0, column=2)
+        tk.Button(root, width=11, text="Save", command=self.save_button).grid(row=0, column=0,pady=(10,10))
+        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=0, column=1,pady=(10,10))
+        tk.Button(root, width=11, text="Remove Block", command=self.remove_button).grid(row=0, column=2,pady=(10,10))
         
         dialogTools.center(root)
 
@@ -101,18 +101,18 @@ class editGraphDialog(object):
         s['legend'] = tk.Entry(self.root)
         try: s['legend'].insert(tk.END, self.data['code'][count-1]['legend'])
         except: pass      
-        s['legend'].grid(row=count+1, column=1)
+        s['legend'].grid(row=count+1, column=1,padx=(5,5),pady=(0,10))
 
         s['color'] = tk.Entry(self.root)
         try: s['color'].insert(tk.END, self.data['code'][count-1]['color'])
         except: pass      
-        s['color'].grid(row=count+1, column=2)
+        s['color'].grid(row=count+1, column=2,padx=(5,10),pady=(0,10))
 
         s['check'] = tk.BooleanVar() 
 
         c = tk.Checkbutton(self.root, text=label,
             command=lambda:self.setCheck(s['check']))
-        c.grid(row=count+1, column=0,stick="w")
+        c.grid(row=count+1, column=0,stick="w",padx=(10,5),pady=(0,10))
         
         try: 
             value = self.data['code'][count-1]['check']

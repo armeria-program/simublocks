@@ -21,6 +21,7 @@
 # SOFTWARE.
 
 import tkinter as tk
+from tkinter import ttk
 from tkinter.scrolledtext import ScrolledText
 from src.dialog.dialogTools import dialogTools
 
@@ -31,16 +32,13 @@ class newCornerDialog(object):
         root = self.root = tk.Tk()
         root.resizable(0,0)
         root.title(str("Create Corner"))
-        tk.Label(root, text="Enter: top, bottom, left or right").grid(row=0, column=0, columnspan=2)
-        tk.Label(root, text="Input:").grid(row=1, column=0)
-        self.input1 = tk.Entry(root)
-        self.input1.grid(row=1, column=1)
-        tk.Label(root, text="Output:").grid(row=2, column=0)
-        self.input2 = tk.Entry(root)
-        self.input2.grid(row=2, column=1)
+        self.root = root
 
-        tk.Button(root, width=11, text="Create", command=self.save_button).grid(row=3, column=0)
-        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=3, column=1)
+        self.dropdownButton1()
+        self.dropdownButton2()        
+
+        tk.Button(root, width=11, text="Create", command=self.save_button).grid(row=2, column=0, pady=10, padx=(10,5))
+        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=2, column=1, pady=10, padx=(5,10))
         
         dialogTools.center(root)
 
@@ -61,3 +59,15 @@ class newCornerDialog(object):
             'status': 'cancel'
         }
         self.root.quit()
+    
+    def dropdownButton1(self):
+        tk.Label(self.root, text="Input:").grid(row=0, column=0)
+        self.input1 = ttk.Combobox(self.root, width=8, state="readonly", values=[ "top",  "bottom", "left", "right"])
+        self.input1.grid(row=0, column=1, pady=10)
+        self.input1.current(0)
+
+    def dropdownButton2(self):
+        tk.Label(self.root, text="Output:").grid(row=1, column=0)
+        self.input2 = ttk.Combobox(self.root,  width=8, state="readonly", values=[ "top",  "bottom", "left", "right"])
+        self.input2.grid(row=1, column=1)
+        self.input2.current(2)

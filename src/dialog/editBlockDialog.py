@@ -33,12 +33,13 @@ class editBlockDialog(object):
         root.resizable(0,0)
         root.title(str("Edit Block: ") + str(data['name']))
         self.data = data 
+        self.root = root
 
         if data['type'] != 'corner':
-            tk.Label(root, text="Name:").grid(row=0, column=0)
+            tk.Label(root, text="Name:").grid(row=0, column=0, pady=10)
             self.inputName = tk.Entry(root)
             self.inputName.insert(tk.END, self.data['name'])
-            self.inputName.grid(row=0,column=1,columnspan=2,sticky="EW")
+            self.inputName.grid(row=0,column=1,columnspan=2,sticky="EW", pady=10, padx=(0,10))
 
         if data['type'] == 'input':
             self.editInput(root)
@@ -51,9 +52,9 @@ class editBlockDialog(object):
                 self.editSystemSS(root)
         
         if data['type'] != 'corner':
-            tk.Button(root, width=11, text="Save", command=self.save_button).grid(row=4, column=0)
-        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=4, column=1)
-        tk.Button(root, width=11, text="Remove Block", command=self.remove_button).grid(row=4, column=2)
+            tk.Button(root, width=11, text="Save", command=self.save_button).grid(row=4, column=0, pady=(5,10), padx=(10,0))
+        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=4, column=1, pady=(5,10), padx=(10,10))
+        tk.Button(root, width=11, text="Remove Block", command=self.remove_button).grid(row=4, column=2, pady=(5,10), padx=(0,10))
         
         dialogTools.center(root)
 
@@ -101,25 +102,26 @@ class editBlockDialog(object):
         self.root.quit()
 
     def twoEntries(self, root, code):
-        self.input1 = tk.Entry(root)
+        self.input1 = tk.Entry(root, width=11)
         self.input1.insert(tk.END, code[0])
-        self.input1.grid(row=2, column=1)
-        self.input2 = tk.Entry(root)
+        self.input1.grid(row=2, column=1, pady=5)
+        self.input2 = tk.Entry(root, width=11)
         self.input2.insert(tk.END, code[1])
-        self.input2.grid(row=2, column=2)
+        self.input2.grid(row=2, column=2, pady=5)
     
     def moreTwoEntries(self, root, code):
-        self.input3 = tk.Entry(root)
+        self.input3 = tk.Entry(root, width=11)
         self.input3.insert(tk.END, code[0])
-        self.input3.grid(row=3, column=1)
-        self.input4 = tk.Entry(root)
+        self.input3.grid(row=3, column=1, pady=5)
+        self.input4 = tk.Entry(root, width=11)
         self.input4.insert(tk.END, code[1])
-        self.input4.grid(row=3, column=2)
+        self.input4.grid(row=3, column=2, pady=5)
 
     def editSum(self, root):
-        tk.Label(root, text="Input:").grid(row=2, column=0)
+        tk.Label(root, text="Type:").grid(row=2, column=0)
         code = self.data['code']
-        self.twoEntries(root, code)
+        self.dropdownButton1(code)
+        self.dropdownButton2(code)
 
     def dropdownButton(self,root):
         tk.Label(root, text="Type:").grid(row=1, column=0)
@@ -149,3 +151,15 @@ class editBlockDialog(object):
         self.inputCode = ScrolledText(root, height=7,width=50)
         self.inputCode.insert(tk.END, self.data['code'])
         self.inputCode.grid(row=1, column=1,columnspan=2)
+
+    def dropdownButton1(self, code):
+        self.input1 = ttk.Combobox(self.root, width=8, state="readonly", values=["+","-"])
+        self.input1.grid(row=2, column=1, pady=(5,10))
+        if code[0] == "+": self.input1.current(0)
+        else: self.input1.current(1)
+
+    def dropdownButton2(self, code):
+        self.input2 = ttk.Combobox(self.root,  width=8, state="readonly", values=["+", "-"])
+        self.input2.grid(row=2, column=2)
+        if code[1] == "+": self.input2.current(0)
+        else: self.input2.current(1)
