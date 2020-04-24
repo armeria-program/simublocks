@@ -55,9 +55,10 @@ class FileApp:
                 FileApp.new()
                 # create project from JSON
                 FileApp.createProject( json.loads( f.read() ) )
-            except:
+            except Exception as e:
+                print(e)
                 # Error if a not JSON file is selected
-                Dialog.alert("Alerta", "Selecione um arquivo válido!")
+                Dialog.alert("Alerta", ["Selecione um arquivo válido!"])
 
     def createProject(project):
         blocks = {}

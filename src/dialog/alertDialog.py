@@ -25,15 +25,13 @@ from src.dialog.dialogTools import dialogTools
 
 class alertDialog(object):
 
-    def __init__(self, title, msg):
+    def __init__(self, title, array):
 
         root = self.root = Tk()
         root.title(str(title))
-        self.msg = str(msg)
         
-        frm_1 = Frame(root)
-        frm_1.pack(ipadx=2, ipady=2)
-        message = Label(frm_1, text=self.msg)
-        message.pack(padx=8, pady=8)
+        for i in range(len(array)):
+            message = Label(root, text=array[i])
+            message.grid(row=i, column=0, padx=10, pady=(5,5))
         
         dialogTools.center(root)

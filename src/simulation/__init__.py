@@ -21,8 +21,16 @@
 # SOFTWARE.
 
 from src.simulation.self import Self
+from src.dialog import Dialog
 
 class Simulation(Self):
 
     def __init__(self, T, tf):
-        Self.__init__(self,T,tf)
+        try:
+            Self.__init__(self,T,tf)
+        except Exception as e:
+            print(e)
+            Dialog.alert("Alert", [
+                "Error during simulation",
+                str(e)
+            ])

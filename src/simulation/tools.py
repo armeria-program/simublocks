@@ -79,7 +79,7 @@ class simulationTools:
                                     )
                                 )
                 else:
-                    Dialog.alert("Alerta", "Um dos blocos não está configurado como TF ou SS")
+                    Dialog.alert("Alerta", ["Um dos blocos não está configurado como TF ou SS"])
                 lt = len(s['t'])
                 lA = len(i.ss[0])
                 i.x = np.zeros((lt,lA,1))  

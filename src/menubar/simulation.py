@@ -27,20 +27,21 @@ from src.simulation import Simulation
 class SimulationFunc:
 
     def execute():
-        try:
-            # show dialog window to enter data ( T and tf )
-            res = Dialog.execute()
 
-            if res['status'] == 'ok':
-                # receive data
-                data = res['data']
+        # show dialog window to enter data ( T and tf )
+        res = Dialog.execute()
+
+        if res['status'] == 'ok':
+            # receive data
+            data = res['data']
+            try:
                 T = float(data["T"])
                 tf = float(data["tf"])
-                # run simulation
-                Simulation(T,tf)
-
-        except Exception as e:
-            Dialog.alert("Erro", str(e))
+            except Exception as e:
+                print(e)
+                Dialog.alert("Alert", ["Error in Sampling Time and Simulation Time values", str(e)])
+            # run simulation
+            Simulation(T,tf)
 
     def importCode():
         code = Workspace.importCode

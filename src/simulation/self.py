@@ -24,6 +24,7 @@ import numpy as np
 from src.element import Workspace
 from src.simulation.tools import simulationTools
 from src.simulation.plot import Plot
+from src.dialog import Dialog
 
 class Self(simulationTools):
 
@@ -37,14 +38,41 @@ class Self(simulationTools):
             'blocks': {}
         }
 
-        exec(Workspace.importCode,s)
+        try:
+            exec(Workspace.importCode,s)
+        except Exception as e: 
+            print(e)
+            Dialog.alert("Alert", [
+                "Error importing your code",
+                str(e)
+            ])
+
         s = self.loadBlocks(s)
         s['graphs'] = Workspace.graphs
-        for i in s['inputs']:
-            exec(s['inputs'][i].code,s)
-            for k in range(len(s['t'])):
-                s['inputs'][i].input[k] = s[s['inputs'][i].name](s['t'][k],k)
         
+        for i in s['inputs']:
+
+            try:
+                exec(s['inputs'][i].code,s)
+            except Exception as e: 
+                print(e)
+                Dialog.alert("Alert", [
+                    "Error in the input block '" + s['inputs'][i].name + "'",
+                    str(e)
+                ])
+                
+            for k in range(len(s['t'])):
+                try:
+                    s['inputs'][i].input[k] = s[s['inputs'][i].name](s['t'][k],k)
+                except Exception as e: 
+                    print(e)
+                    Dialog.alert("Alert", [
+                        "Error in the input block '" + s['inputs'][i].name + "'", 
+                        "Remember that the function and the block must have the same name"
+                    ])
+        
+        # Simulation
+
         for k in range(len(s['t']) -1):
             for i in s['blocks']:
                 b = s['blocks'][i]
