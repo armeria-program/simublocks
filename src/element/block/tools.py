@@ -37,8 +37,10 @@ class blockTools:
             (self.coords[2] - self.coords[0])/2 + self.coords[0],
             (self.coords[3] - self.coords[1])/2 + self.coords[1],
         ) )
-        self.moveArc()
-        self.moveLines()
+        
+        if self.type != "graph":
+            self.moveArc()
+            self.moveLines()
 
     def moveLines(self):
         for n_arc in [0,1,2]:

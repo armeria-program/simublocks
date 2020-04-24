@@ -48,6 +48,46 @@
                 401.0,
                 150.0
             ]
+        },
+        "3": {
+            "name": "Graph",
+            "type": "graph",
+            "conn": [
+                {},
+                {},
+                {}
+            ],
+            "code": [
+                {
+                    "id": 1,
+                    "type": "input",
+                    "legend": "input",
+                    "color": "",
+                    "check": true
+                },
+                {
+                    "id": 2,
+                    "type": "system",
+                    "subtype": "output",
+                    "legend": "output",
+                    "color": "",
+                    "check": true
+                },
+                {
+                    "id": 2,
+                    "type": "system",
+                    "subtype": "input",
+                    "legend": "",
+                    "color": "",
+                    "check": false
+                }
+            ],
+            "coords": [
+                178.0,
+                191.0,
+                278.0,
+                291.0
+            ]
         }
     }
 }

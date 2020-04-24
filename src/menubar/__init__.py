@@ -59,6 +59,8 @@ class MenuBar():
             command=lambda: Workspace.createBlock("Sum","sum"))
         new.add_command(label="Corner",
             command=lambda:self.createCorner())
+        new.add_command(label="Plot Graph",
+            command=lambda: Workspace.createGraph("Graph"))
         return new
 
     def menuExecute(self,menu):
@@ -78,7 +80,9 @@ class MenuBar():
 
     def createCorner(self):
         res = Dialog.newCorner()
-        Workspace.createBlock("Corner","corner", code=res['code'])
+        if res['status'] == "save":
+            if res['code'] == ['','']: res['code'] = None
+            Workspace.createBlock("Corner","corner", code=res['code'])
 
     def exit(self):
         exit(0)

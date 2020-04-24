@@ -27,6 +27,7 @@ from src.dialog import Dialog
 class Workspace:
 
     blocks = []
+    graphs = []
     connections = dict()
     id = 0
     importCode = ''
@@ -54,8 +55,9 @@ class Workspace:
 
         Workspace.canvas.tag_bind(block.self, '<B1-Motion>',
             lambda event: block.move(event))
+
         Workspace.canvas.tag_bind(block.self, '<Double-Button-1>',
-            lambda event: Workspace.editBlock(event,block))
+        lambda event: Workspace.editBlock(event,block))
 
         # Bind of input and output ( _out_ , _in_ , _in2_ )
 
@@ -72,6 +74,34 @@ class Workspace:
 
         return block
 
+    def createGraph(name, coords = (50,50,150,150), code=None):
+        if code == None: code = []
+        block = Graph(Workspace.canvas,type,name,coords,code)
+
+        Workspace.id +=1 
+        block.id = Workspace.id
+        Workspace.graphs.append(block)
+        Workspace.blocks.append(block)
+
+        Workspace.canvas.tag_bind(block.self, '<B1-Motion>',
+            lambda event: block.move(event))
+        Workspace.canvas.tag_bind(block.self, '<Double-Button-1>',
+            lambda event: Workspace.editGraph(event,block))
+
+    def editGraph(event, block, isSum = False):
+        name = Workspace.canvas.itemcget(block.text, 'text')
+        
+        res = Dialog.editGraph({
+            'name': name,
+            'code': block.code,
+            'blocks': Workspace.blocks
+        })
+
+        if res['status'] == 'delete':
+            Workspace.blocks.remove(block)
+            block.remove()
+        elif res['status'] == 'save':
+            block.code = res['code']
 
     def editBlock(event, block, isSum = False):
         name = Workspace.canvas.itemcget(block.text, 'text')

@@ -25,33 +25,31 @@ import matplotlib.pyplot as plt
 class Plot:
 
     def run(s):
-        Plot.plotInput(s['inputs'], s['t'])
-        Plot.plotSystem(s['blocks'], s['t'])
+        count = 0
+        for i in s['graphs']:
+            count += 1
+            Plot.figure(count, i, {**s['blocks'], **s['inputs']}, s['t'])
+
+        #Plot.plotInput(s['inputs'], s['t'])
+        #Plot.plotSystem(s['blocks'], s['t'])
         plt.show()
-
-    def plotInput(inputs,t):
-
-        plt.figure("Input")
-        plt.title("Input Signals")
-        cont = 0
-        
-        for i in inputs:
-            cont += 1
-            b = inputs[i]
-            if len(inputs) > 1: plt.subplot(100*len(inputs) + 10 + cont)
-            plt.plot(t[:-1], b.input[:-1])
-            plt.legend([b.name])
-            print(b.name)
-
-    def plotSystem(blocks, t):
-
-        for i in blocks:
-            b = blocks[i]
-            plt.figure('figure'+str(i))
-            plt.subplot(211)
-            plt.title("Bloco: " + b.name)
-            plt.plot(t[:-1], ((b.ss[2]@b.x).T + (b.ss[3]@b.u).T)[:-1]  )
-            plt.legend(["Block Output"])
-            plt.subplot(212)
-            plt.plot(t[:-1], (b.u).reshape(len(b.x))[:-1])
-            plt.legend(["Block Input"])
+    
+    
+    def figure(count, graph, blocks, t):
+        plt.figure(count)
+        legend = []
+        for line in graph.code:
+            if line['check']:
+                if line['type'] == 'input':
+                    block = blocks[line['id']]
+                    plt.plot(t[:-1], block.input[:-1],line['color'])
+                    legend.append(line['legend'])
+                elif line['type'] == 'system':
+                    block = blocks[line['id']]
+                    legend.append(line['legend'])
+                    if line['subtype'] == 'input':
+                        plt.plot(t[:-1], (block.u).reshape(len(block.x))[:-1],line['color'])
+                    elif line['subtype'] == 'output':
+                        plt.plot(t[:-1], ((block.ss[2]@block.x).T + (block.ss[3]@block.u).T)[:-1] ,line['color'])
+        plt.legend(legend)
+        plt.grid()

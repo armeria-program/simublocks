@@ -39,7 +39,7 @@ class Self(simulationTools):
 
         exec(Workspace.importCode,s)
         s = self.loadBlocks(s)
-
+        s['graphs'] = Workspace.graphs
         for i in s['inputs']:
             exec(s['inputs'][i].code,s)
             for k in range(len(s['t'])):

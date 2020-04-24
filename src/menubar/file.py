@@ -63,7 +63,10 @@ class FileApp:
         # Create each block
         for i in project['blocks']:
             b = project['blocks'][i]
-            blocks[i] = Workspace.createBlock(b['name'],b['type'],b['coords'], b['code'])
+            if b['type'] != "graph":
+                blocks[i] = Workspace.createBlock(b['name'],b['type'],b['coords'], b['code'])
+            else:
+                blocks[i] = Workspace.createGraph(b['name'],b['coords'], b['code'])
         
         Workspace.importCode = project['importCode']
 

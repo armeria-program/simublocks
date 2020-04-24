@@ -22,12 +22,11 @@
 
 from src.dialog.newBlockDialog import newBlockDialog
 from src.dialog.editBlockDialog import editBlockDialog
+from src.dialog.editGraphDialog import editGraphDialog
 from src.dialog.alertDialog import alertDialog
 from src.dialog.executeDialog import executeDialog
 from src.dialog.importCodeDialog import importCodeDialog
 from src.dialog.newCornerDialog import newCornerDialog
-
-
 
 class Dialog:
 
@@ -39,6 +38,12 @@ class Dialog:
 
     def editBlock(data):
         msgbox = editBlockDialog(data)
+        msgbox.root.mainloop()
+        msgbox.root.destroy()
+        return msgbox.returning
+
+    def editGraph(data):
+        msgbox = editGraphDialog(data)
         msgbox.root.mainloop()
         msgbox.root.destroy()
         return msgbox.returning

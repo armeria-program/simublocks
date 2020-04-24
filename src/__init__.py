@@ -23,7 +23,6 @@
 from src.menubar import *
 from src.element import *
 from tkinter import *
-from src.simulation import Simulation
 import os
 
 class Index(Canvas):
