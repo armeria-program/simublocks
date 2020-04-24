@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tkinter import *
+import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter import ttk
 from src.dialog.dialogTools import dialogTools
@@ -29,15 +29,15 @@ class editBlockDialog(object):
 
     def __init__(self, data):
 
-        root = self.root = Tk()
+        root = self.root = tk.Tk()
         root.resizable(0,0)
         root.title(str("Edit Block: ") + str(data['name']))
         self.data = data 
 
         if data['type'] != 'corner':
-            Label(root, text="Name:").grid(row=0, column=0)
-            self.inputName = Entry(root)
-            self.inputName.insert(END, self.data['name'])
+            tk.Label(root, text="Name:").grid(row=0, column=0)
+            self.inputName = tk.Entry(root)
+            self.inputName.insert(tk.END, self.data['name'])
             self.inputName.grid(row=0,column=1,columnspan=2,sticky="EW")
 
         if data['type'] == 'input':
@@ -51,9 +51,9 @@ class editBlockDialog(object):
                 self.editSystemSS(root)
         
         if data['type'] != 'corner':
-            Button(root, width=11, text="Save", command=self.save_button).grid(row=4, column=0)
-        Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=4, column=1)
-        Button(root, width=11, text="Remove Block", command=self.remove_button).grid(row=4, column=2)
+            tk.Button(root, width=11, text="Save", command=self.save_button).grid(row=4, column=0)
+        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=4, column=1)
+        tk.Button(root, width=11, text="Remove Block", command=self.remove_button).grid(row=4, column=2)
         
         dialogTools.center(root)
 
@@ -61,7 +61,7 @@ class editBlockDialog(object):
         self.data['name'] = self.inputName.get()
 
         if self.data['type'] == 'input':
-            self.data['code'] = self.inputCode.get(1.0, END)
+            self.data['code'] = self.inputCode.get(1.0, tk.END)
         elif self.data['type'] == 'sum':
             self.data['code'] = [
                 self.input1.get(),
@@ -101,28 +101,28 @@ class editBlockDialog(object):
         self.root.quit()
 
     def twoEntries(self, root, code):
-        self.input1 = Entry(root)
-        self.input1.insert(END, code[0])
+        self.input1 = tk.Entry(root)
+        self.input1.insert(tk.END, code[0])
         self.input1.grid(row=2, column=1)
-        self.input2 = Entry(root)
-        self.input2.insert(END, code[1])
+        self.input2 = tk.Entry(root)
+        self.input2.insert(tk.END, code[1])
         self.input2.grid(row=2, column=2)
     
     def moreTwoEntries(self, root, code):
-        self.input3 = Entry(root)
-        self.input3.insert(END, code[0])
+        self.input3 = tk.Entry(root)
+        self.input3.insert(tk.END, code[0])
         self.input3.grid(row=3, column=1)
-        self.input4 = Entry(root)
-        self.input4.insert(END, code[1])
+        self.input4 = tk.Entry(root)
+        self.input4.insert(tk.END, code[1])
         self.input4.grid(row=3, column=2)
 
     def editSum(self, root):
-        Label(root, text="Input:").grid(row=2, column=0)
+        tk.Label(root, text="Input:").grid(row=2, column=0)
         code = self.data['code']
         self.twoEntries(root, code)
 
     def dropdownButton(self,root):
-        Label(root, text="Type:").grid(row=1, column=0)
+        tk.Label(root, text="Type:").grid(row=1, column=0)
         self.dropdown = ttk.Combobox(root,state="readonly", values=[ "continuous",  "discrete"])
         self.dropdown.grid(row=1, column=1, columnspan=2)
         if self.data['code']['sub_type'] == "continuous":
@@ -132,20 +132,20 @@ class editBlockDialog(object):
 
     def editSystemTF(self, root):
         self.dropdownButton(root)
-        Label(root, text="Num and Den:").grid(row=2, column=0)
+        tk.Label(root, text="Num and Den:").grid(row=2, column=0)
         code = self.data['code']['self']
         self.twoEntries(root, code)
 
     def editSystemSS(self, root):
         self.dropdownButton(root)
         code = self.data['code']['self']
-        Label(root, text="A and B:").grid(row=2, column=0)
+        tk.Label(root, text="A and B:").grid(row=2, column=0)
         self.twoEntries(root, code)
-        Label(root, text="C and D:").grid(row=3, column=0)
+        tk.Label(root, text="C and D:").grid(row=3, column=0)
         self.moreTwoEntries(root, code[2:])
 
     def editInput(self, root):
-        Label(root, text="Code:").grid(row=1, column=0)
+        tk.Label(root, text="Code:").grid(row=1, column=0)
         self.inputCode = ScrolledText(root, height=7,width=50)
-        self.inputCode.insert(END, self.data['code'])
+        self.inputCode.insert(tk.END, self.data['code'])
         self.inputCode.grid(row=1, column=1,columnspan=2)

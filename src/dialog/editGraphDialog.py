@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tkinter import *
+import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter import ttk
 from src.dialog.dialogTools import dialogTools
@@ -29,13 +29,13 @@ class editGraphDialog(object):
 
     def __init__(self, data):
 
-        root = self.root = Tk()
+        root = self.root = tk.Tk()
         root.resizable(0,0)
         root.title(str("Edit Block: ") + str(data['name']))
         self.root = root
         self.data = data 
-        Label(root, text="legend:").grid(row=1, column=1)
-        Label(root, text="color:").grid(row=1, column=2)
+        tk.Label(root, text="legend:").grid(row=1, column=1)
+        tk.Label(root, text="color:").grid(row=1, column=2)
         count = 0
         self.code = []
         for block in data['blocks']:
@@ -63,9 +63,9 @@ class editGraphDialog(object):
                 })
 
         
-        Button(root, width=11, text="Save", command=self.save_button).grid(row=0, column=0)
-        Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=0, column=1)
-        Button(root, width=11, text="Remove Block", command=self.remove_button).grid(row=0, column=2)
+        tk.Button(root, width=11, text="Save", command=self.save_button).grid(row=0, column=0)
+        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=0, column=1)
+        tk.Button(root, width=11, text="Remove Block", command=self.remove_button).grid(row=0, column=2)
         
         dialogTools.center(root)
 
@@ -98,19 +98,19 @@ class editGraphDialog(object):
 
     def listLine(self, count, label):
         s = dict()
-        s['legend'] = Entry(self.root)
-        try: s['legend'].insert(END, self.data['code'][count-1]['legend'])
+        s['legend'] = tk.Entry(self.root)
+        try: s['legend'].insert(tk.END, self.data['code'][count-1]['legend'])
         except: pass      
         s['legend'].grid(row=count+1, column=1)
 
-        s['color'] = Entry(self.root)
-        try: s['color'].insert(END, self.data['code'][count-1]['color'])
+        s['color'] = tk.Entry(self.root)
+        try: s['color'].insert(tk.END, self.data['code'][count-1]['color'])
         except: pass      
         s['color'].grid(row=count+1, column=2)
 
-        s['check'] = BooleanVar() 
+        s['check'] = tk.BooleanVar() 
 
-        c = Checkbutton(self.root, text=label,
+        c = tk.Checkbutton(self.root, text=label,
             command=lambda:self.setCheck(s['check']))
         c.grid(row=count+1, column=0,stick="w")
         

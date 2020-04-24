@@ -20,31 +20,31 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import tkinter
+import tkinter as tk
 from src.dialog.dialogTools import dialogTools
 
 class newBlockDialog(object):
 
     def __init__(self,b1, b2,b3):
 
-        root = self.root = tkinter.Tk()
+        root = self.root = tk.Tk()
         root.title('Add new Block')
         
         # button frame
-        frm_2 = tkinter.Frame(root)
+        frm_2 = tk.Frame(root)
         frm_2.pack(padx=10, pady=10)
 
         # buttons
-        btn_1 = tkinter.Button(frm_2, width=10, text=b1)
+        btn_1 = tk.Button(frm_2, width=10, text=b1)
         btn_1['command'] = lambda: self.button_action(b1)
         btn_1.pack(side='left')
         btn_1.focus_set()
         
-        btn_2 = tkinter.Button(frm_2, width=10, text=b2)
+        btn_2 = tk.Button(frm_2, width=10, text=b2)
         btn_2['command'] = lambda: self.button_action(b2)
         btn_2.pack(side='left')
 
-        btn_3 = tkinter.Button(frm_2, width=10, text=b3)
+        btn_3 = tk.Button(frm_2, width=10, text=b3)
         btn_3['command'] = lambda: self.button_action(b3)
         btn_3.pack(side='left')
 

@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tkinter import *
+import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from src.dialog.dialogTools import dialogTools
 
@@ -28,19 +28,19 @@ class newCornerDialog(object):
 
     def __init__(self):
 
-        root = self.root = Tk()
+        root = self.root = tk.Tk()
         root.resizable(0,0)
         root.title(str("Create Corner"))
-        Label(root, text="Enter: top, bottom, left or right").grid(row=0, column=0, columnspan=2)
-        Label(root, text="Input:").grid(row=1, column=0)
-        self.input1 = Entry(root)
+        tk.Label(root, text="Enter: top, bottom, left or right").grid(row=0, column=0, columnspan=2)
+        tk.Label(root, text="Input:").grid(row=1, column=0)
+        self.input1 = tk.Entry(root)
         self.input1.grid(row=1, column=1)
-        Label(root, text="Output:").grid(row=2, column=0)
-        self.input2 = Entry(root)
+        tk.Label(root, text="Output:").grid(row=2, column=0)
+        self.input2 = tk.Entry(root)
         self.input2.grid(row=2, column=1)
 
-        Button(root, width=11, text="Create", command=self.save_button).grid(row=3, column=0)
-        Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=3, column=1)
+        tk.Button(root, width=11, text="Create", command=self.save_button).grid(row=3, column=0)
+        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=3, column=1)
         
         dialogTools.center(root)
 

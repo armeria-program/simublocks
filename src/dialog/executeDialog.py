@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tkinter import *
+import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from src.dialog.dialogTools import dialogTools
 
@@ -28,21 +28,21 @@ class executeDialog(object):
 
     def __init__(self):
 
-        root = self.root = Tk()
+        root = self.root = tk.Tk()
         root.resizable(0,0)
         root.title("Run Simulation")
 
-        Label(root, text="Sampling Time:").grid(row=0, column=0)
-        self.T = Entry(root)
-        self.T.insert(END, "0.01")
+        tk.Label(root, text="Sampling Time:").grid(row=0, column=0)
+        self.T = tk.Entry(root)
+        self.T.insert(tk.END, "0.01")
         self.T.grid(row=0,column=1,sticky="EW")
-        Label(root, text="Simulation Time:").grid(row=1, column=0)
-        self.tf = Entry(root)
-        self.tf.insert(END, "50")
+        tk.Label(root, text="Simulation Time:").grid(row=1, column=0)
+        self.tf = tk.Entry(root)
+        self.tf.insert(tk.END, "50")
         self.tf.grid(row=1,column=1,sticky="EW")
 
-        Button(root, width=11, text="Run", command=self.execute_button).grid(row=2, column=0)
-        Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=2, column=1)
+        tk.Button(root, width=11, text="Run", command=self.execute_button).grid(row=2, column=0)
+        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=2, column=1)
         
         dialogTools.center(root)
 

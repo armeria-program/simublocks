@@ -22,7 +22,7 @@
 
 from src.menubar import *
 from src.element import *
-from tkinter import *
+from tkinter import Tk, Canvas, BOTH
 import os
 
 class Index(Canvas):

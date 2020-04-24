@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tkinter import *
+import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from src.dialog.dialogTools import dialogTools
 
@@ -28,21 +28,21 @@ class importCodeDialog(object):
 
     def __init__(self, code):
 
-        root = self.root = Tk()
+        root = self.root = tk.Tk()
         root.resizable(0,0)
         root.title("Import Code and Packages")
 
         self.inputCode = ScrolledText(root, height=5,width=50)
-        self.inputCode.insert(END, code)
+        self.inputCode.insert(tk.END, code)
         self.inputCode.grid(row=0, column=0,columnspan=2)
-        Button(root, width=11, text="Save", command=self.save_button).grid(row=1, column=0)
-        Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=1, column=1)
+        tk.Button(root, width=11, text="Save", command=self.save_button).grid(row=1, column=0)
+        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=1, column=1)
 
         dialogTools.center(root)
 
     def save_button(self):
         self.returning = {
-            'code': self.inputCode.get(1.0, END),
+            'code': self.inputCode.get(1.0, tk.END),
             'status': 'ok'
         }
         self.root.quit()

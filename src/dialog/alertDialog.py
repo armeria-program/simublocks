@@ -20,20 +20,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import tkinter
+from tkinter import Tk, Frame, Label
 from src.dialog.dialogTools import dialogTools
 
 class alertDialog(object):
 
     def __init__(self, title, msg):
 
-        root = self.root = tkinter.Tk()
+        root = self.root = Tk()
         root.title(str(title))
         self.msg = str(msg)
         
-        frm_1 = tkinter.Frame(root)
+        frm_1 = Frame(root)
         frm_1.pack(ipadx=2, ipady=2)
-        message = tkinter.Label(frm_1, text=self.msg)
+        message = Label(frm_1, text=self.msg)
         message.pack(padx=8, pady=8)
         
         dialogTools.center(root)
