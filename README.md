@@ -15,13 +15,12 @@ Please feel free to contribute.
 </p>
 
 <p align="center">
-  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img4.png" height="200" />
-  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img5.png" height="200" />
+  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img2.png" width="400" />
+  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img3.png" width="400" />
 </p>
 
 <p align="center">
-  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img2.png" width="400" />
-  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img3.png" width="400" />
+  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img6.png" width="800" />
 </p>
 
 ## Dependencies
