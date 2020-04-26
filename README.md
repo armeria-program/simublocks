@@ -4,9 +4,7 @@ Simublocks is a python program, made with Tkinter, for simulating dynamic system
 
 This project is still under construction. Please feel free to contribute.
 
-## Usage
-
-If you want to use this package, follow these steps:
+## Installation
 
 Install dependencies
 
