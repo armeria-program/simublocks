@@ -1,2 +1,5 @@
 __pycache__/
 test.py
+simublocks.egg-info
+dist
+README_pypi.md

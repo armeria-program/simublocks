@@ -2,11 +2,7 @@
 
 Simublocks is a python program, made with Tkinter, for simulating dynamic systems.
 
-This project is still under construction.
-
-In the future, it will be available for download and use in the Python Package Index (PyPI).
-
-Please feel free to contribute.
+This project is still under construction. Please feel free to contribute.
 
 ## Screenshots
 
@@ -29,18 +25,18 @@ The program requires the following python packages: tkinter, control, numpy, sci
 
 ## Usage
 
-If you want to use or contribute, follow these steps:
+If you want to use this package, follow these steps:
 
 Install dependencies
 
     sudo apt install python3 python3-pip python3-tk
-    pip3 install control
 
 Download and run simublocks
 
-    git clone https://github.com/bentoavb/simublocks.git
-    cd simublocks
-    python3 main.py 
+    pip3 install simublocks
+    simublocks
+
+  
 
 ## License
 
