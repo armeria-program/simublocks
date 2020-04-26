@@ -27,7 +27,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name = 'simublocks',
-    version = '0.1.4',
+    version = '0.1.6',
     description = 'Python Simulation Blocks for Dynamic Systems',
     author = 'Anderson Vitor Bento',
     author_email = 'bentoavb@gmail.com',
