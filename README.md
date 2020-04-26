@@ -6,22 +6,13 @@ This project is still under construction. Please feel free to contribute.
 
 ## Screenshots
 
-<p align="center">
-  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img1.png" width="800" />
-</p>
+![](https://github.com/bentoavb/simublocks/blob/master/images/img1.png)
 
-<p align="center">
-  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img2.png" width="400" />
-  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img3.png" width="400" />
-</p>
+![](https://github.com/bentoavb/simublocks/blob/master/images/img2.png)
 
-<p align="center">
-  <img src="https://github.com/bentoavb/simublocks/blob/master/images/img6.png" width="800" />
-</p>
+![](https://github.com/bentoavb/simublocks/blob/master/images/img3.png)
 
-## Dependencies
-
-The program requires the following python packages: tkinter, control, numpy, scipy and matplotlib.
+![](https://github.com/bentoavb/simublocks/blob/master/images/img6.png)
 
 ## Usage
 
