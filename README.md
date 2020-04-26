@@ -8,7 +8,7 @@ This project is still under construction. Please feel free to contribute.
 
 ![](https://github.com/bentoavb/simublocks/blob/master/images/img1.png)
 
-![](https://github.com/bentoavb/simublocks/blob/master/images/img2.png =400x) ![](https://github.com/bentoavb/simublocks/blob/master/images/img3.png =400x)
+![](https://github.com/bentoavb/simublocks/blob/master/images/img2.png =400x400) ![](https://github.com/bentoavb/simublocks/blob/master/images/img3.png =400x400)
 
 ![](https://github.com/bentoavb/simublocks/blob/master/images/img6.png)
 
