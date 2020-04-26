@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.element.connection import Connection
+from simublocks.element.connection import Connection
 
 class blockTools:
     def move(self, event):

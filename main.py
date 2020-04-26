@@ -1,3 +1,3 @@
-from src import Index
+from simublocks import Index
 
 Index.main()

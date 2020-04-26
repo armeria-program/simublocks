@@ -20,36 +20,25 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import tkinter as tk
-from src.dialog.dialogTools import dialogTools
+from simublocks.element.block.block import Block 
 
-class newBlockDialog(object):
+class Sum(Block):
+    def __init__(self, canvas, type, text, coords, code):
+        Block.__init__(self,canvas,text, coords, code)
+        self.type = type
+        c = self.coords
+        self._out_ = canvas.create_arc(self.right_pos(self.coords), start=-90, extent=180, fill="black")
+        self._in_ = canvas.create_arc(self.left_pos(self.coords), start=-90, extent=180, fill="black")
+        self._in2_ = canvas.create_arc(self.bottom_pos(self.coords), start=0, extent=180, fill="black")
 
-    def __init__(self,b1, b2,b3):
+    def moveArc(self):
+        c = self.coords
+        self.canvas.coords(self._out_, self.right_pos(self.coords))
+        self.canvas.coords(self._in_, self.left_pos(self.coords))
+        self.canvas.coords(self._in2_, self.bottom_pos(self.coords))
 
-        root = self.root = tk.Tk()
-        root.title('Add new Block')
-        
-        # button frame
-        frm_2 = tk.Frame(root)
-        frm_2.pack(padx=10, pady=10)
-
-        # buttons
-        btn_1 = tk.Button(frm_2, width=10, text=b1)
-        btn_1['command'] = lambda: self.button_action(b1)
-        btn_1.pack(side='left')
-        btn_1.focus_set()
-        
-        btn_2 = tk.Button(frm_2, width=10, text=b2)
-        btn_2['command'] = lambda: self.button_action(b2)
-        btn_2.pack(side='left')
-
-        btn_3 = tk.Button(frm_2, width=10, text=b3)
-        btn_3['command'] = lambda: self.button_action(b3)
-        btn_3.pack(side='left')
-
-        dialogTools.center(root)
-
-    def button_action(self, value):
-        self.returning = value
-        self.root.quit()
+    def remove(self):
+        Block.remove(self)
+        self.canvas.delete(self._out_)
+        self.canvas.delete(self._in_)
+        self.canvas.delete(self._in2_)

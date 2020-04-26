@@ -23,7 +23,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter.scrolledtext import ScrolledText
-from src.dialog.dialogTools import dialogTools
+from simublocks.dialog.dialogTools import dialogTools
 
 class newCornerDialog(object):
 

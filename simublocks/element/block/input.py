@@ -20,26 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.menubar import *
-from src.element import *
-from tkinter import Tk, Canvas, BOTH
-import os
+from simublocks.element.block.block import Block 
 
-class Index(Canvas):
+class Input(Block):
+    def __init__(self, canvas, type, text, coords, code):
+        Block.__init__(self,canvas,text, coords, code)
+        self.type = type
+        self._out_ = canvas.create_arc(self.right_pos(self.coords), start=-90, extent=180, fill="black")
 
-    def main():  
-        root = Tk()
-        app = Index(root)
-        root.mainloop()
-
-    def __init__(self, root=None):
-        Canvas.__init__(self, root, bg="white",width=1000,height=500)              
-        self.root = root
-        self.init_window()
-
-    def init_window(self):     
-        self.root.title("SIMUBLOCKS\tPython Simulation Blocks for Dynamic Systems")
-        self.pack(fill=BOTH, expand=1)
-        Workspace.canvas = self
-        MenuBar(self)
-        
+    def moveArc(self):
+        self.canvas.coords(self._out_,self.right_pos(self.coords))
+    
+    def remove(self):
+        Block.remove(self)
+        self.canvas.delete(self._out_)

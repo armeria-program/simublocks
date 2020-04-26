@@ -20,9 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.element.block.corner import Corner    
-from src.element.block.block import Block
-from src.element.block.input import Input
-from src.element.block.sum import Sum
-from src.element.block.system import System 
-from src.element.block.graph import Graph 
+from simublocks.element.block.block import Block 
+
+class Graph(Block):
+    def __init__(self, canvas, type, text, coords, code):
+        Block.__init__(self,canvas,text, coords, code)
+        self.type = "graph"
+    
+    def remove(self):
+        Block.remove(self)

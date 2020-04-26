@@ -20,12 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.menubar.file import FileApp
-from src.menubar.simulation import SimulationFunc
+from simublocks.menubar.file import FileApp
+from simublocks.menubar.simulation import SimulationFunc
 
 import tkinter as tk
-from src.element import Workspace
-from src.dialog import Dialog
+from simublocks.element import Workspace
+from simublocks.dialog import Dialog
 
 
 class MenuBar():

@@ -22,27 +22,36 @@
 
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
-from src.dialog.dialogTools import dialogTools
+from simublocks.dialog.dialogTools import dialogTools
 
-class importCodeDialog(object):
+class executeDialog(object):
 
-    def __init__(self, code):
+    def __init__(self):
 
         root = self.root = tk.Tk()
         root.resizable(0,0)
-        root.title("Import Code and Packages")
+        root.title("Run Simulation")
 
-        self.inputCode = ScrolledText(root, height=5,width=50)
-        self.inputCode.insert(tk.END, code)
-        self.inputCode.grid(row=0, column=0,columnspan=2)
-        tk.Button(root, width=11, text="Save", command=self.save_button).grid(row=1, column=0)
-        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=1, column=1)
+        tk.Label(root, text="Sampling Time:").grid(row=0, column=0, pady=10, padx=10, sticky="E")
+        self.T = tk.Entry(root,width=5)
+        self.T.insert(tk.END, "0.01")
+        self.T.grid(row=0,column=1,sticky="EW", padx=(0,10))
+        tk.Label(root, text="Simulation Time:").grid(row=1, column=0, pady=(0,10), padx=10, sticky="E")
+        self.tf = tk.Entry(root,width=5)
+        self.tf.insert(tk.END, "50")
+        self.tf.grid(row=1,column=1,sticky="EW", padx=(0,10))
 
+        tk.Button(root, width=11, text="Run", command=self.execute_button).grid(row=2, column=0, pady=(0,10), padx=10)
+        tk.Button(root, width=11, text="Cancel", command=self.cancel_button).grid(row=2, column=1, pady=(0,10), padx=(0,10))
+        
         dialogTools.center(root)
 
-    def save_button(self):
+    def execute_button(self):
         self.returning = {
-            'code': self.inputCode.get(1.0, tk.END),
+            'data': {
+                'T': self.T.get(),
+                'tf': self.tf.get()
+            },
             'status': 'ok'
         }
         self.root.quit()

@@ -20,17 +20,26 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.simulation.self import Self
-from src.dialog import Dialog
+from simublocks.menubar import *
+from simublocks.element import *
+from tkinter import Tk, Canvas, BOTH
+import os
 
-class Simulation(Self):
+class Index(Canvas):
 
-    def __init__(self, T, tf):
-        try:
-            Self.__init__(self,T,tf)
-        except Exception as e:
-            print(e)
-            Dialog.alert("Alert", [
-                "Error during simulation",
-                str(e)
-            ])
+    def main():  
+        root = Tk()
+        app = Index(root)
+        root.mainloop()
+
+    def __init__(self, root=None):
+        Canvas.__init__(self, root, bg="white",width=1000,height=500)              
+        self.root = root
+        self.init_window()
+
+    def init_window(self):     
+        self.root.title("SIMUBLOCKS\tPython Simulation Blocks for Dynamic Systems")
+        self.pack(fill=BOTH, expand=1)
+        Workspace.canvas = self
+        MenuBar(self)
+        

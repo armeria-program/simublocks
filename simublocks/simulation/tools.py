@@ -24,8 +24,8 @@ import numpy as np
 import control as c
 import json
 
-from src.element import Workspace
-from src.dialog import Dialog
+from simublocks.element import Workspace
+from simublocks.dialog import Dialog
 
 class simulationTools:
 

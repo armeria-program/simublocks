@@ -20,22 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.element.block.block import Block 
-
-class System(Block):
-    def __init__(self, canvas, type, text, coords, code):
-        Block.__init__(self,canvas,text, coords, code)
-        self.type = type
-        c = self.coords
-        self._out_ = canvas.create_arc(self.right_pos(self.coords), start=-90, extent=180, fill="black")
-        self._in_ = canvas.create_arc(self.left_pos(self.coords), start=-90, extent=180, fill="black")
-
-    def moveArc(self):
-        c = self.coords
-        self.canvas.coords(self._out_, self.right_pos(self.coords))
-        self.canvas.coords(self._in_, self.left_pos(self.coords))
-
-    def remove(self):
-        Block.remove(self)
-        self.canvas.delete(self._out_)
-        self.canvas.delete(self._in_)
+from simublocks.element.block.corner import Corner    
+from simublocks.element.block.block import Block
+from simublocks.element.block.input import Input
+from simublocks.element.block.sum import Sum
+from simublocks.element.block.system import System 
+from simublocks.element.block.graph import Graph 

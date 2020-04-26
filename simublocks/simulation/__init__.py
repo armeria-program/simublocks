@@ -20,25 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.element.block.block import Block 
+from simublocks.simulation.self import Self
+from simublocks.dialog import Dialog
 
-class Sum(Block):
-    def __init__(self, canvas, type, text, coords, code):
-        Block.__init__(self,canvas,text, coords, code)
-        self.type = type
-        c = self.coords
-        self._out_ = canvas.create_arc(self.right_pos(self.coords), start=-90, extent=180, fill="black")
-        self._in_ = canvas.create_arc(self.left_pos(self.coords), start=-90, extent=180, fill="black")
-        self._in2_ = canvas.create_arc(self.bottom_pos(self.coords), start=0, extent=180, fill="black")
+class Simulation(Self):
 
-    def moveArc(self):
-        c = self.coords
-        self.canvas.coords(self._out_, self.right_pos(self.coords))
-        self.canvas.coords(self._in_, self.left_pos(self.coords))
-        self.canvas.coords(self._in2_, self.bottom_pos(self.coords))
-
-    def remove(self):
-        Block.remove(self)
-        self.canvas.delete(self._out_)
-        self.canvas.delete(self._in_)
-        self.canvas.delete(self._in2_)
+    def __init__(self, T, tf):
+        try:
+            Self.__init__(self,T,tf)
+        except Exception as e:
+            print(e)
+            Dialog.alert("Alert", [
+                "Error during simulation",
+                str(e)
+            ])

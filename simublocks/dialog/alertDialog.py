@@ -20,21 +20,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.element.block.tools import blockTools
+from tkinter import Tk, Frame, Label
+from simublocks.dialog.dialogTools import dialogTools
 
-class Block(blockTools):
-    def __init__(self, canvas, text, coords, code):
-        self.canvas= canvas
-        self.conn = [{ 'n_line': None },{ 'n_line': None },{ 'n_line': None }]
-        self.name = text
-        self.code = code
-        self.ss = None # Matrizes de Espaço de Estados
-        self.x = None # Vetor de Estados
-        self.u = None # Entrada do Bloco
+class alertDialog(object):
 
-        self.coords = coords
-        self.self = canvas.create_rectangle(self.coords,fill="white")
-        self.text = canvas.create_text((
-            (self.coords[2] - self.coords[0])/2 + self.coords[0],
-            (self.coords[3] - self.coords[1])/2 + self.coords[1],
-        ), text=text)
+    def __init__(self, title, array):
+
+        root = self.root = Tk()
+        root.title(str(title))
+        
+        for i in range(len(array)):
+            message = Label(root, text=array[i])
+            message.grid(row=i, column=0, padx=10, pady=(5,5))
+        
+        dialogTools.center(root)

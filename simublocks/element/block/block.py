@@ -20,31 +20,21 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.element import Workspace
-from src.dialog import Dialog
-from src.simulation import Simulation
+from simublocks.element.block.tools import blockTools
 
-class SimulationFunc:
+class Block(blockTools):
+    def __init__(self, canvas, text, coords, code):
+        self.canvas= canvas
+        self.conn = [{ 'n_line': None },{ 'n_line': None },{ 'n_line': None }]
+        self.name = text
+        self.code = code
+        self.ss = None # Matrizes de Espaço de Estados
+        self.x = None # Vetor de Estados
+        self.u = None # Entrada do Bloco
 
-    def execute():
-
-        # show dialog window to enter data ( T and tf )
-        res = Dialog.execute()
-
-        if res['status'] == 'ok':
-            # receive data
-            data = res['data']
-            try:
-                T = float(data["T"])
-                tf = float(data["tf"])
-            except Exception as e:
-                print(e)
-                Dialog.alert("Alert", ["Error in Sampling Time and Simulation Time values", str(e)])
-            # run simulation
-            Simulation(T,tf)
-
-    def importCode():
-        code = Workspace.importCode
-        res = Dialog.importCode(code)
-        if res['status'] == 'ok':
-            Workspace.importCode = res['code']
+        self.coords = coords
+        self.self = canvas.create_rectangle(self.coords,fill="white")
+        self.text = canvas.create_text((
+            (self.coords[2] - self.coords[0])/2 + self.coords[0],
+            (self.coords[3] - self.coords[1])/2 + self.coords[1],
+        ), text=text)

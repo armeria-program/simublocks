@@ -23,7 +23,7 @@
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter import ttk
-from src.dialog.dialogTools import dialogTools
+from simublocks.dialog.dialogTools import dialogTools
 
 class editBlockDialog(object):
 

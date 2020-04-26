@@ -23,8 +23,8 @@
 import json
 import os
 from tkinter import filedialog
-from src.element import Workspace, Block
-from src.dialog import Dialog
+from simublocks.element import Workspace, Block
+from simublocks.dialog import Dialog
 
 class FileApp:
     def save():

@@ -20,17 +20,31 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.element.block.block import Block 
+from simublocks.element import Workspace
+from simublocks.dialog import Dialog
+from simublocks.simulation import Simulation
 
-class Input(Block):
-    def __init__(self, canvas, type, text, coords, code):
-        Block.__init__(self,canvas,text, coords, code)
-        self.type = type
-        self._out_ = canvas.create_arc(self.right_pos(self.coords), start=-90, extent=180, fill="black")
+class SimulationFunc:
 
-    def moveArc(self):
-        self.canvas.coords(self._out_,self.right_pos(self.coords))
-    
-    def remove(self):
-        Block.remove(self)
-        self.canvas.delete(self._out_)
+    def execute():
+
+        # show dialog window to enter data ( T and tf )
+        res = Dialog.execute()
+
+        if res['status'] == 'ok':
+            # receive data
+            data = res['data']
+            try:
+                T = float(data["T"])
+                tf = float(data["tf"])
+            except Exception as e:
+                print(e)
+                Dialog.alert("Alert", ["Error in Sampling Time and Simulation Time values", str(e)])
+            # run simulation
+            Simulation(T,tf)
+
+    def importCode():
+        code = Workspace.importCode
+        res = Dialog.importCode(code)
+        if res['status'] == 'ok':
+            Workspace.importCode = res['code']

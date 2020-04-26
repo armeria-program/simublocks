@@ -20,9 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.element.block import *
-from src.element.connection import *
-from src.dialog import Dialog
+from simublocks.element.block import *
+from simublocks.element.connection import *
+from simublocks.dialog import Dialog
 
 class Workspace:
 

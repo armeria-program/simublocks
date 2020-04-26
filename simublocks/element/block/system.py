@@ -20,18 +20,22 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tkinter import Tk, Frame, Label
-from src.dialog.dialogTools import dialogTools
+from simublocks.element.block.block import Block 
 
-class alertDialog(object):
+class System(Block):
+    def __init__(self, canvas, type, text, coords, code):
+        Block.__init__(self,canvas,text, coords, code)
+        self.type = type
+        c = self.coords
+        self._out_ = canvas.create_arc(self.right_pos(self.coords), start=-90, extent=180, fill="black")
+        self._in_ = canvas.create_arc(self.left_pos(self.coords), start=-90, extent=180, fill="black")
 
-    def __init__(self, title, array):
+    def moveArc(self):
+        c = self.coords
+        self.canvas.coords(self._out_, self.right_pos(self.coords))
+        self.canvas.coords(self._in_, self.left_pos(self.coords))
 
-        root = self.root = Tk()
-        root.title(str(title))
-        
-        for i in range(len(array)):
-            message = Label(root, text=array[i])
-            message.grid(row=i, column=0, padx=10, pady=(5,5))
-        
-        dialogTools.center(root)
+    def remove(self):
+        Block.remove(self)
+        self.canvas.delete(self._out_)
+        self.canvas.delete(self._in_)

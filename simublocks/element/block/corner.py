@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.element.block.block import Block 
+from simublocks.element.block.block import Block 
 
 class Corner(Block):
     def __init__(self, canvas, type, text, coords, code):

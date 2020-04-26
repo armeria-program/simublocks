@@ -21,10 +21,10 @@
 # SOFTWARE.
 
 import numpy as np
-from src.element import Workspace
-from src.simulation.tools import simulationTools
-from src.simulation.plot import Plot
-from src.dialog import Dialog
+from simublocks.element import Workspace
+from simublocks.simulation.tools import simulationTools
+from simublocks.simulation.plot import Plot
+from simublocks.dialog import Dialog
 
 class Self(simulationTools):
 

@@ -20,13 +20,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from src.dialog.newBlockDialog import newBlockDialog
-from src.dialog.editBlockDialog import editBlockDialog
-from src.dialog.editGraphDialog import editGraphDialog
-from src.dialog.alertDialog import alertDialog
-from src.dialog.executeDialog import executeDialog
-from src.dialog.importCodeDialog import importCodeDialog
-from src.dialog.newCornerDialog import newCornerDialog
+from simublocks.dialog.newBlockDialog import newBlockDialog
+from simublocks.dialog.editBlockDialog import editBlockDialog
+from simublocks.dialog.editGraphDialog import editGraphDialog
+from simublocks.dialog.alertDialog import alertDialog
+from simublocks.dialog.executeDialog import executeDialog
+from simublocks.dialog.importCodeDialog import importCodeDialog
+from simublocks.dialog.newCornerDialog import newCornerDialog
 
 class Dialog:
 
