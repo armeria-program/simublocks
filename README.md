@@ -4,6 +4,20 @@ Simublocks is a python program, made with Tkinter, for simulating dynamic system
 
 This project is still under construction. Please feel free to contribute.
 
+## Usage
+
+If you want to use this package, follow these steps:
+
+Install dependencies
+
+    sudo apt install python3 python3-pip python3-tk
+
+Download and run simublocks
+
+    pip3 install simublocks
+    simublocks
+
+
 ## Screenshots
 
 <p align="center">
@@ -19,20 +33,7 @@ This project is still under construction. Please feel free to contribute.
   <img alt="" src="https://raw.githubusercontent.com/bentoavb/simublocks/master/images/img6.png" width="800" />
 </p>
 
-## Usage
-
-If you want to use this package, follow these steps:
-
-Install dependencies
-
-    sudo apt install python3 python3-pip python3-tk
-
-Download and run simublocks
-
-    pip3 install simublocks
-    simublocks
-
-  
+ 
 
 ## License
 
