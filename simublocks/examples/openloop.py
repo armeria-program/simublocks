@@ -1,4 +1,4 @@
-{
+openloop = {
     "name": "openloop.json",
     "importCode": "",
     "blocks": {
@@ -65,7 +65,7 @@
                     "type": "input",
                     "legend": "input",
                     "color": "",
-                    "check": true
+                    "check": True
                 },
                 {
                     "id": 2,
@@ -73,7 +73,7 @@
                     "subtype": "output",
                     "legend": "output",
                     "color": "",
-                    "check": true
+                    "check": True
                 },
                 {
                     "id": 2,
@@ -81,7 +81,7 @@
                     "subtype": "input",
                     "legend": "",
                     "color": "",
-                    "check": false
+                    "check": False
                 }
             ],
             "coords": [

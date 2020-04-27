@@ -1,4 +1,4 @@
-{
+closedloop = {
     "name": "closedloop.json",
     "importCode": "",
     "blocks": {
@@ -293,7 +293,7 @@
                     "subtype": "output",
                     "legend": "",
                     "color": "",
-                    "check": false
+                    "check": False
                 },
                 {
                     "id": 2,
@@ -301,7 +301,7 @@
                     "subtype": "input",
                     "legend": "disturbed control signal",
                     "color": "r",
-                    "check": true
+                    "check": True
                 },
                 {
                     "id": 6,
@@ -309,7 +309,7 @@
                     "subtype": "output",
                     "legend": "PI control signal",
                     "color": "b--",
-                    "check": true
+                    "check": True
                 },
                 {
                     "id": 6,
@@ -317,21 +317,21 @@
                     "subtype": "input",
                     "legend": "",
                     "color": "",
-                    "check": false
+                    "check": False
                 },
                 {
                     "id": 9,
                     "type": "input",
                     "legend": "",
                     "color": "",
-                    "check": false
+                    "check": False
                 },
                 {
                     "id": 10,
                     "type": "input",
                     "legend": "disturbance signal",
                     "color": "k",
-                    "check": true
+                    "check": True
                 }
             ],
             "coords": [
@@ -356,7 +356,7 @@
                     "subtype": "output",
                     "legend": "output",
                     "color": "",
-                    "check": true
+                    "check": True
                 },
                 {
                     "id": 2,
@@ -364,7 +364,7 @@
                     "subtype": "input",
                     "legend": "",
                     "color": "",
-                    "check": false
+                    "check": False
                 },
                 {
                     "id": 6,
@@ -372,7 +372,7 @@
                     "subtype": "output",
                     "legend": "",
                     "color": "",
-                    "check": false
+                    "check": False
                 },
                 {
                     "id": 6,
@@ -380,21 +380,21 @@
                     "subtype": "input",
                     "legend": "error",
                     "color": "",
-                    "check": true
+                    "check": True
                 },
                 {
                     "id": 9,
                     "type": "input",
                     "legend": "setpoint",
                     "color": "k--",
-                    "check": true
+                    "check": True
                 },
                 {
                     "id": 10,
                     "type": "input",
                     "legend": "",
                     "color": "",
-                    "check": false
+                    "check": False
                 }
             ],
             "coords": [

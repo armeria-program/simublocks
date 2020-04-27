@@ -25,6 +25,7 @@ import os
 from tkinter import filedialog
 from simublocks.element import Workspace, Block
 from simublocks.dialog import Dialog
+import simublocks.examples as ex
 
 class FileApp:
     def save():
@@ -59,6 +60,13 @@ class FileApp:
                 print(e)
                 # Error if a not JSON file is selected
                 Dialog.alert("Alerta", ["Selecione um arquivo válido!"])
+
+    def openExample(name):
+        FileApp.new()
+        if name == 'openloop':
+            FileApp.createProject( ex.openloop )
+        if name == 'closedloop':
+            FileApp.createProject( ex.closedloop )
 
     def createProject(project):
         blocks = {}
