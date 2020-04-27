@@ -14,7 +14,7 @@ openloop = {
                 },
                 {}
             ],
-            "code": "def Input(t,k):\n\tif t < 25:\n\t\treturn 1\n\telse:\n\t\treturn 3\n",
+            "code": "def Input(t,k):\n\tif t < 15:\n\t\treturn 1\n\telse:\n\t\treturn 3\n",
             "coords": [
                 50,
                 50,

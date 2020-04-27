@@ -38,7 +38,7 @@ class executeDialog(object):
         self.T.grid(row=0,column=1,sticky="EW", padx=(0,10))
         tk.Label(root, text="Simulation Time:").grid(row=1, column=0, pady=(0,10), padx=10, sticky="E")
         self.tf = tk.Entry(root,width=5)
-        self.tf.insert(tk.END, "50")
+        self.tf.insert(tk.END, "30")
         self.tf.grid(row=1,column=1,sticky="EW", padx=(0,10))
 
         tk.Button(root, width=11, text="Run", command=self.execute_button).grid(row=2, column=0, pady=(0,10), padx=10)
