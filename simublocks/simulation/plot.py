@@ -21,6 +21,7 @@
 # SOFTWARE.
 
 import matplotlib.pyplot as plt
+from simublocks.dialog import Dialog
 
 class Plot:
 
@@ -41,11 +42,23 @@ class Plot:
         for line in graph.code:
             if line['check']:
                 if line['type'] == 'input':
-                    block = blocks[line['id']]
+                    try:
+                        block = blocks[line['id']]
+                    except Exception as e: 
+                        Dialog.alert("Alert", [
+                            "Error in the 'graph' block", 
+                            "Please, after removing or creating a new 'system' or 'input' block, remove and recreate all 'graph' blocks"
+                        ])
                     plt.plot(t[:-1], block.input[:-1],line['color'])
                     legend.append(line['legend'])
                 elif line['type'] == 'system':
-                    block = blocks[line['id']]
+                    try:
+                        block = blocks[line['id']]
+                    except Exception as e: 
+                        Dialog.alert("Alert", [
+                            "Error in the 'graph' block", 
+                            "Please, after removing or creating a new 'system' or 'input' block, remove and recreate all 'graph' blocks"
+                        ])
                     legend.append(line['legend'])
                     if line['subtype'] == 'input':
                         plt.plot(t[:-1], (block.u).reshape(len(block.x))[:-1],line['color'])
