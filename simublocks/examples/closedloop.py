@@ -1,5 +1,5 @@
 closedloop = {
-    "name": "closedloop.json",
+    "name": "closed.json",
     "importCode": "",
     "blocks": {
         "1": {
@@ -288,15 +288,7 @@ closedloop = {
             ],
             "code": [
                 {
-                    "id": 2,
-                    "type": "system",
-                    "subtype": "output",
-                    "legend": "",
-                    "color": "",
-                    "check": False
-                },
-                {
-                    "id": 2,
+                    "name": "Sys (TF)",
                     "type": "system",
                     "subtype": "input",
                     "legend": "disturbed control signal",
@@ -304,7 +296,7 @@ closedloop = {
                     "check": True
                 },
                 {
-                    "id": 6,
+                    "name": "PI (SS)",
                     "type": "system",
                     "subtype": "output",
                     "legend": "PI control signal",
@@ -312,23 +304,9 @@ closedloop = {
                     "check": True
                 },
                 {
-                    "id": 6,
-                    "type": "system",
-                    "subtype": "input",
-                    "legend": "",
-                    "color": "",
-                    "check": False
-                },
-                {
-                    "id": 9,
+                    "name": "Disturbance",
                     "type": "input",
-                    "legend": "",
-                    "color": "",
-                    "check": False
-                },
-                {
-                    "id": 10,
-                    "type": "input",
+                    "subtype": "output",
                     "legend": "disturbance signal",
                     "color": "k",
                     "check": True
@@ -351,7 +329,7 @@ closedloop = {
             ],
             "code": [
                 {
-                    "id": 2,
+                    "name": "Sys (TF)",
                     "type": "system",
                     "subtype": "output",
                     "legend": "output",
@@ -359,23 +337,7 @@ closedloop = {
                     "check": True
                 },
                 {
-                    "id": 2,
-                    "type": "system",
-                    "subtype": "input",
-                    "legend": "",
-                    "color": "",
-                    "check": False
-                },
-                {
-                    "id": 6,
-                    "type": "system",
-                    "subtype": "output",
-                    "legend": "",
-                    "color": "",
-                    "check": False
-                },
-                {
-                    "id": 6,
+                    "name": "PI (SS)",
                     "type": "system",
                     "subtype": "input",
                     "legend": "error",
@@ -383,25 +345,19 @@ closedloop = {
                     "check": True
                 },
                 {
-                    "id": 9,
+                    "name": "SetPoint",
                     "type": "input",
+                    "subtype": "output",
                     "legend": "setpoint",
                     "color": "k--",
                     "check": True
-                },
-                {
-                    "id": 10,
-                    "type": "input",
-                    "legend": "",
-                    "color": "",
-                    "check": False
                 }
             ],
             "coords": [
-                866.0,
-                203.0,
-                966.0,
-                303.0
+                852.0,
+                174.0,
+                952.0,
+                274.0
             ]
         }
     }

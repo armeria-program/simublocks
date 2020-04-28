@@ -110,11 +110,22 @@ class Workspace:
             'type': block.type
         })
         if res['status'] == 'delete':
-            if block.conn[0]['n_line'] == None and  block.conn[1]['n_line'] == None:
+            aux_graph = False
+            for graph in Workspace.graphs:
+                for j in range(len(graph.code)):
+                    try:
+                        line = graph.code[j]
+                        if line['name'] == block.name:
+                            del graph.code[j]
+                    except: pass
+            if aux_graph:
+                Dialog.alert("Alert", ["Block cannot be removed because it has marked signals on a graph.","Please, uncheck these signals first."])
+            elif block.conn[0]['n_line'] == None and  block.conn[1]['n_line'] == None:
                 Workspace.blocks.remove(block)
                 block.remove()
             else:
-                Dialog.alert("Alert", ["Block cannot be removed because it has connections"])
+                Dialog.alert("Alert", ["Block cannot be removed because it has connections.","Please, remove these connections first."])
+            
         elif res['status'] == 'save':
             code = res['data']['code']
             block.name = res['data']['name']

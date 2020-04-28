@@ -83,7 +83,7 @@ class MenuBar():
         if type == "TF": code['self'] = ['[1]','[1,2,3]']
         else: code['self'] = ['[ [-5, -5],[1, 0] ]','[[1],[0]]', '[0,1]', '[0]']
         
-        Workspace.createBlock("Sys ("+type+")","system", code=code)
+        Workspace.createBlock(str(Workspace.id +1)+ ". Sys (" +type+ ")","system", code=code)
 
     def createCorner(self):
         res = Dialog.newCorner()

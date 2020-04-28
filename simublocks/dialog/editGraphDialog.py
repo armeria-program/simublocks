@@ -42,24 +42,25 @@ class editGraphDialog(object):
             if block.type == "system":
                 count += 1
                 self.code.append({
-                    'id': block.id,
+                    'name': block.name,
                     'type': block.type,
                     'subtype': 'output',
-                    **self.listLine(count,'output of "' + block.name + '"')
+                    **self.listLine(count,'output of "' + block.name + '"', block.name)
                 })
                 count += 1
                 self.code.append({
-                    'id': block.id,
+                    'name': block.name,
                     'type': block.type,
                     'subtype': 'input',
-                    **self.listLine(count,'input of "' + block.name + '"')
+                    **self.listLine(count,'input of "' + block.name + '"', block.name, 'input')
                 })
             elif block.type == "input":
                 count += 1
                 self.code.append({
-                    'id': block.id,
+                    'name': block.name,
                     'type': block.type,
-                    **self.listLine(count,block.name)
+                    'subtype': 'output',
+                    **self.listLine(count,block.name, block.name)
                 })
 
         
@@ -72,12 +73,13 @@ class editGraphDialog(object):
     def save_button(self):
         self.data['code'] = []
         for i in self.code:
-            self.data['code'].append({
-                **i,
-                'check': i['check'].get(),
-                'legend': i['legend'].get(),
-                'color': i['color'].get()
-            })
+            if i['check'].get():
+                self.data['code'].append({
+                    **i,
+                    'check': i['check'].get(),
+                    'legend': i['legend'].get(),
+                    'color': i['color'].get()
+                })
         self.returning = {
             'status': 'save',
             'code': self.data['code']
@@ -96,15 +98,20 @@ class editGraphDialog(object):
         }
         self.root.quit()
 
-    def listLine(self, count, label):
+    def listLine(self, count, label, _name, subtype = 'output'):
         s = dict()
         s['legend'] = tk.Entry(self.root)
-        try: s['legend'].insert(tk.END, self.data['code'][count-1]['legend'])
+
+        try:
+            code = next(filter(lambda i: i['name'] == _name and i['subtype'] == subtype, self.data['code']))
+        except: pass
+
+        try: s['legend'].insert(tk.END, code['legend'])
         except: pass      
         s['legend'].grid(row=count+1, column=1,padx=(5,5),pady=(0,10))
 
         s['color'] = tk.Entry(self.root)
-        try: s['color'].insert(tk.END, self.data['code'][count-1]['color'])
+        try: s['color'].insert(tk.END, code['color'])
         except: pass      
         s['color'].grid(row=count+1, column=2,padx=(5,10),pady=(0,10))
 
@@ -115,7 +122,7 @@ class editGraphDialog(object):
         c.grid(row=count+1, column=0,stick="w",padx=(10,5),pady=(0,10))
         
         try: 
-            value = self.data['code'][count-1]['check']
+            value = code['check']
             s['check'].set(value)
             if value: c.select()
         except: pass

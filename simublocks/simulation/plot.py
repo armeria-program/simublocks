@@ -43,7 +43,8 @@ class Plot:
             if line['check']:
                 if line['type'] == 'input':
                     try:
-                        block = blocks[line['id']]
+                        block = next(filter(lambda i: blocks[i].name == line['name'], blocks))
+                        block = blocks[block]
                     except Exception as e: 
                         Dialog.alert("Alert", [
                             "Error in the 'graph' block", 
@@ -53,7 +54,8 @@ class Plot:
                     legend.append(line['legend'])
                 elif line['type'] == 'system':
                     try:
-                        block = blocks[line['id']]
+                        block = next(filter(lambda i: blocks[i].name == line['name'], blocks))
+                        block = blocks[block]
                     except Exception as e: 
                         Dialog.alert("Alert", [
                             "Error in the 'graph' block", 
