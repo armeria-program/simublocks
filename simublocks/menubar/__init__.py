@@ -50,8 +50,10 @@ class MenuBar():
 
     def menuExamples(self,menu):
         new = tk.Menu(menu)
-        new.add_command(label="Open Loop",command=lambda:FileApp.openExample('openloop'))
-        new.add_command(label="Closed Loop (PI)",command=lambda:FileApp.openExample('closedloop'))
+        new.add_command(label="Open-loop System",command=lambda:FileApp.openExample('openloop'))
+        new.add_command(label="Closed-loop System (PI)",command=lambda:FileApp.openExample('closedloop'))
+        new.add_command(label="System with Noise",command=lambda:FileApp.openExample('noise'))
+
         return new
 
     def menuBlocks(self,menu):

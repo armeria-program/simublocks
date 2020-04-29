@@ -65,8 +65,11 @@ class FileApp:
         FileApp.new()
         if name == 'openloop':
             FileApp.createProject( ex.openloop )
-        if name == 'closedloop':
+        elif name == 'closedloop':
             FileApp.createProject( ex.closedloop )
+        elif name == 'noise':
+            FileApp.createProject( ex.noise_example )
+
 
     def createProject(project):
         blocks = {}
