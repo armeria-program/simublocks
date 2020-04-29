@@ -54,7 +54,7 @@ class Connection:
                     (pos1[1] + pos1[3])/2,
                     (pos2[0] + pos2[2])/2,
                     (pos2[1] + pos2[3])/2
-                ],width=2)
+                ],width=2,fill="blue")
             }
             Connection.empty()
 

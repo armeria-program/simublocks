@@ -29,6 +29,8 @@ class System(Block):
         c = self.coords
         self._out_ = canvas.create_arc(self.right_pos(self.coords), start=-90, extent=180, fill="black")
         self._in_ = canvas.create_arc(self.left_pos(self.coords), start=-90, extent=180, fill="black")
+        if type == "function":
+            self.func = None
 
     def moveArc(self):
         c = self.coords

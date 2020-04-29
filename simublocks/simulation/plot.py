@@ -29,7 +29,7 @@ class Plot:
         count = 0
         for i in s['graphs']:
             count += 1
-            Plot.figure(count, i, {**s['blocks'], **s['inputs']}, s['t'])
+            Plot.figure(count, i, {**s['blocks'], **s['inputs'], **s['functions']}, s['t'])
 
         #Plot.plotInput(s['inputs'], s['t'])
         #Plot.plotSystem(s['blocks'], s['t'])
@@ -41,27 +41,24 @@ class Plot:
         legend = []
         for line in graph.code:
             if line['check']:
+                if line['type'] in ['input', 'system', 'function']:
+                    try:
+                        block = next(filter(lambda i: blocks[i].name == line['name'], blocks))
+                        block = blocks[block]
+                    except Exception as e: 
+                        Dialog.alert("Alert", [
+                            "Error in the 'graph' block", 
+                            "Please, after removing or creating a new 'system' or 'input' block, remove and recreate all 'graph' blocks"
+                        ])
+                    legend.append(line['legend'])
                 if line['type'] == 'input':
-                    try:
-                        block = next(filter(lambda i: blocks[i].name == line['name'], blocks))
-                        block = blocks[block]
-                    except Exception as e: 
-                        Dialog.alert("Alert", [
-                            "Error in the 'graph' block", 
-                            "Please, after removing or creating a new 'system' or 'input' block, remove and recreate all 'graph' blocks"
-                        ])
                     plt.plot(t[:-1], block.input[:-1],line['color'])
-                    legend.append(line['legend'])
+                elif line['type'] == 'function':
+                    if line['subtype'] == 'input':
+                        plt.plot(t[:-1], block.input[:-1],line['color'])
+                    elif line['subtype'] == 'output':
+                        plt.plot(t[:-1], block.output[:-1],line['color'])
                 elif line['type'] == 'system':
-                    try:
-                        block = next(filter(lambda i: blocks[i].name == line['name'], blocks))
-                        block = blocks[block]
-                    except Exception as e: 
-                        Dialog.alert("Alert", [
-                            "Error in the 'graph' block", 
-                            "Please, after removing or creating a new 'system' or 'input' block, remove and recreate all 'graph' blocks"
-                        ])
-                    legend.append(line['legend'])
                     if line['subtype'] == 'input':
                         plt.plot(t[:-1], (block.u).reshape(len(block.x))[:-1],line['color'])
                     elif line['subtype'] == 'output':

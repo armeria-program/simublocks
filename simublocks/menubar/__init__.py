@@ -60,6 +60,8 @@ class MenuBar():
             command=lambda: Workspace.createBlock("Input","input"))
         new.add_command(label="Transfer Function",
             command=lambda: self.createNewSystem("TF"))
+        new.add_command(label="Code Function",
+            command=lambda: self.createNewSystem("Func", "function"))
         new.add_command(label="State Space",
             command=lambda: self.createNewSystem("SS"))
         new.add_command(label="Sum",
@@ -76,14 +78,16 @@ class MenuBar():
             command=lambda:SimulationFunc.importCode())
         return new
 
-    def createNewSystem(self, type):
+    def createNewSystem(self, type, block_type = "system"):
         code = dict()
         code['type'] = type
         code['sub_type'] = "continuous"
+        name = "system_" + str(Workspace.id +1)
         if type == "TF": code['self'] = ['[1]','[1,2,3]']
-        else: code['self'] = ['[ [-5, -5],[1, 0] ]','[[1],[0]]', '[0,1]', '[0]']
-        
-        Workspace.createBlock(str(Workspace.id +1)+ ". Sys (" +type+ ")","system", code=code)
+        elif type == "SS": code['self'] = ['[ [-5, -5],[1, 0] ]','[[1],[0]]', '[0,1]', '[0]']
+        else: code['self'] = code = 'def ' + name + '(input):\n\treturn input**2'
+
+        Workspace.createBlock(name, block_type, code=code)
 
     def createCorner(self):
         res = Dialog.newCorner()

@@ -41,7 +41,7 @@ class editBlockDialog(object):
             self.inputName.insert(tk.END, self.data['name'])
             self.inputName.grid(row=0,column=1,columnspan=2,sticky="EW", pady=10, padx=(0,10))
 
-        if data['type'] == 'input':
+        if data['type'] == 'input' or data['type'] == 'function':
             self.editInput(root)
         elif data['type'] == 'sum':
             self.editSum(root)
@@ -61,7 +61,7 @@ class editBlockDialog(object):
     def save_button(self):
         self.data['name'] = self.inputName.get()
 
-        if self.data['type'] == 'input':
+        if self.data['type'] == 'input' or self.data['type'] == 'function':
             self.data['code'] = self.inputCode.get(1.0, tk.END)
         elif self.data['type'] == 'sum':
             self.data['code'] = [

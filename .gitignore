@@ -2,3 +2,4 @@ __pycache__/
 test.py
 simublocks.egg-info
 dist
+test.json

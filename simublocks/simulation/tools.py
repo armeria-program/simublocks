@@ -34,6 +34,10 @@ class simulationTools:
             if i.type == 'input':
                 i.input = np.zeros(len(s['t']))
                 s['inputs'][i.id] = i
+            elif i.type == "function":
+                i.input = np.zeros(len(s['t']))
+                i.output = np.zeros(len(s['t']))
+                s['functions'][i.id] = i
             elif i.type == 'system':
                 if i.code['type'] == "TF":
                     if i.code['sub_type'] == "continuous":
@@ -121,3 +125,11 @@ class simulationTools:
                 next = other.conn[0]['otherblock']
                 _value = self.search(next,k)
                 return (other.ss[2]@other.x[k] + other.ss[3]*_value)[0][0]
+
+        elif other.type == "function":
+            if 'otherblock' in other.conn[0]:
+                first = other.conn[0]['otherblock']
+                _value = self.search(first, k)
+            else:
+                _value = 0
+            return other.func(_value)

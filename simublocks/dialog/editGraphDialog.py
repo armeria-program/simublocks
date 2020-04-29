@@ -39,7 +39,7 @@ class editGraphDialog(object):
         count = 0
         self.code = []
         for block in data['blocks']:
-            if block.type == "system":
+            if block.type == "system" or block.type == "function":
                 count += 1
                 self.code.append({
                     'name': block.name,

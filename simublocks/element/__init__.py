@@ -35,7 +35,7 @@ class Workspace:
     new = dict({'conn': None,'block': None,'n_arc': None, 'arc': None})
 
     def createBlock(name,type, coords = (50,50,150,150), code=None):
-        if type == "system":               
+        if type == "system" or type == "function":               
             block = System(Workspace.canvas,type,name,coords,code)  
         elif type == "input":
             if code == None: code = 'def ' + str(name) + '(t,k):\n\tif t < 25:\n\t\treturn 1\n\telse:\n\t\treturn 3'
@@ -48,6 +48,8 @@ class Workspace:
             if code == None: code = ['top','right']
             if coords == (50,50,150,150): coords = (50,50,80,80)
             block = Corner(Workspace.canvas,type,name,coords,code)
+        elif type == "function":
+            print('...')
 
         Workspace.id +=1 
         block.id = Workspace.id

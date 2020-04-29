@@ -35,7 +35,8 @@ class Self(simulationTools):
             't': np.arange(0,tf+T,T),
             'T': T,
             'inputs': {},
-            'blocks': {}
+            'blocks': {},
+            'functions': {}
         }
 
         try:
@@ -70,6 +71,18 @@ class Self(simulationTools):
                         "Error in the input block '" + s['inputs'][i].name + "'", 
                         "Remember that the function and the block must have the same name"
                     ])
+
+        for i in s['functions']:
+            try:
+                func = s['functions'][i]
+                exec(func.code,s)
+                s['functions'][i].func = s[func.name]
+            except Exception as e: 
+                print(e)
+                Dialog.alert("Alert", [
+                    "Error in the function block '" + s['inputs'][i].name + "'",
+                    str(e)
+                ])
         
         # Simulation
 
@@ -82,6 +95,16 @@ class Self(simulationTools):
                 else:
                     b.u[k] = 0
                 b.x[k+1] = b.ss[0]@b.x[k] + b.ss[1]*b.u[k]
-        
+
+            for i in s['functions']:
+                func = s['functions'][i]
+                if 'otherblock' in func.conn[0]:
+                    first = func.conn[0]['otherblock']
+                    func.input[k] = self.search(first, k)
+                else:
+                    func.input[k] = 0
+                func.output[k] = func.func(func.input[k])
+
+                
         Plot.run(s)
         

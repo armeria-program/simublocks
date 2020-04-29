@@ -35,7 +35,7 @@ class blockTools:
         self.canvas.coords(self.self, self.coords)
         self.canvas.coords(self.text, (
             (self.coords[2] - self.coords[0])/2 + self.coords[0],
-            (self.coords[3] - self.coords[1])/2 + self.coords[1],
+            self.coords[1] + 15,
         ) )
         
         if self.type != "graph":
