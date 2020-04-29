@@ -26,6 +26,7 @@ from tkinter import filedialog
 from simublocks.element import Workspace, Block
 from simublocks.dialog import Dialog
 import simublocks.examples as ex
+import copy
 
 class FileApp:
     def save():
@@ -71,7 +72,8 @@ class FileApp:
             FileApp.createProject( ex.noise_example )
 
 
-    def createProject(project):
+    def createProject(_dict):
+        project = copy.deepcopy(_dict)
         blocks = {}
         # Create each block
         for i in project['blocks']:

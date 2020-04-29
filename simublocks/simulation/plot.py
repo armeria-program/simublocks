@@ -54,7 +54,6 @@ class Plot:
                 if line['type'] == 'input':
                     plt.plot(t[:-1], block.input[:-1],line['color'])
                 elif line['type'] in ['function','system','sum']:
-                    print(block.name)
                     plt.plot(t[:-1], block.y[:-1],line['color'])
         plt.legend(legend)
         plt.grid()

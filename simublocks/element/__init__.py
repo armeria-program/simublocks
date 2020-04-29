@@ -48,8 +48,6 @@ class Workspace:
             if code == None: code = ['top','right']
             if coords == (50,50,150,150): coords = (50,50,80,80)
             block = Corner(Workspace.canvas,type,name,coords,code)
-        elif type == "function":
-            print('...')
 
         Workspace.id +=1 
         block.id = Workspace.id
