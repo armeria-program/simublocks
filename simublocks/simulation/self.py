@@ -114,14 +114,14 @@ class Self(simulationTools):
                 b = s['sums'][i]
                 if np.isnan(b.y[k]):
                     soma = 0
-                    if 'otherblock' in other.conn[0]:
-                        next0 = other.conn[0]['otherblock']
-                        if other.code[0] == "+":  soma += self.search(next0, k)
+                    if 'otherblock' in b.conn[0]:
+                        next0 = b.conn[0]['otherblock']
+                        if b.code[0] == "+":  soma += self.search(next0, k)
                         else:  soma-= self.search(next0, k)
                     
-                    if 'otherblock' in other.conn[2]:
-                        next2 = other.conn[2]['otherblock']
-                        if other.code[1] == "+": soma += self.search(next2, k)
+                    if 'otherblock' in b.conn[2]:
+                        next2 = b.conn[2]['otherblock']
+                        if b.code[1] == "+": soma += self.search(next2, k)
                         else: soma-= self.search(next2, k)
 
                     b.y[k] = soma
