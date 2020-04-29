@@ -29,10 +29,10 @@ class Plot:
         count = 0
         for i in s['graphs']:
             count += 1
-            Plot.figure(count, i, {**s['blocks'], **s['inputs'], **s['functions']}, s['t'])
+            Plot.figure(count, i, {**s['systems'], **s['inputs'], **s['functions'], **s['sums']}, s['t'])
 
         #Plot.plotInput(s['inputs'], s['t'])
-        #Plot.plotSystem(s['blocks'], s['t'])
+        #Plot.plotSystem(s['systems'], s['t'])
         plt.show()
     
     
@@ -41,7 +41,7 @@ class Plot:
         legend = []
         for line in graph.code:
             if line['check']:
-                if line['type'] in ['input', 'system', 'function']:
+                if line['type'] in ['input', 'system', 'function', 'sum']:
                     try:
                         block = next(filter(lambda i: blocks[i].name == line['name'], blocks))
                         block = blocks[block]
@@ -53,15 +53,8 @@ class Plot:
                     legend.append(line['legend'])
                 if line['type'] == 'input':
                     plt.plot(t[:-1], block.input[:-1],line['color'])
-                elif line['type'] == 'function':
-                    if line['subtype'] == 'input':
-                        plt.plot(t[:-1], block.input[:-1],line['color'])
-                    elif line['subtype'] == 'output':
-                        plt.plot(t[:-1], block.output[:-1],line['color'])
-                elif line['type'] == 'system':
-                    if line['subtype'] == 'input':
-                        plt.plot(t[:-1], (block.u).reshape(len(block.x))[:-1],line['color'])
-                    elif line['subtype'] == 'output':
-                        plt.plot(t[:-1], ((block.ss[2]@block.x).T + (block.ss[3]@block.u).T)[:-1] ,line['color'])
+                elif line['type'] in ['function','system','sum']:
+                    print(block.name)
+                    plt.plot(t[:-1], block.y[:-1],line['color'])
         plt.legend(legend)
         plt.grid()

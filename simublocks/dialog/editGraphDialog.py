@@ -39,27 +39,11 @@ class editGraphDialog(object):
         count = 0
         self.code = []
         for block in data['blocks']:
-            if block.type == "system" or block.type == "function":
+            if block.type in ['system', 'function', 'input', 'sum']:
                 count += 1
                 self.code.append({
                     'name': block.name,
                     'type': block.type,
-                    'subtype': 'output',
-                    **self.listLine(count,'output of "' + block.name + '"', block.name)
-                })
-                count += 1
-                self.code.append({
-                    'name': block.name,
-                    'type': block.type,
-                    'subtype': 'input',
-                    **self.listLine(count,'input of "' + block.name + '"', block.name, 'input')
-                })
-            elif block.type == "input":
-                count += 1
-                self.code.append({
-                    'name': block.name,
-                    'type': block.type,
-                    'subtype': 'output',
                     **self.listLine(count,block.name, block.name)
                 })
 
@@ -98,12 +82,12 @@ class editGraphDialog(object):
         }
         self.root.quit()
 
-    def listLine(self, count, label, _name, subtype = 'output'):
+    def listLine(self, count, label, _name):
         s = dict()
         s['legend'] = tk.Entry(self.root)
 
         try:
-            code = next(filter(lambda i: i['name'] == _name and i['subtype'] == subtype, self.data['code']))
+            code = next(filter(lambda i: i['name'] == _name, self.data['code']))
         except: pass
 
         try: s['legend'].insert(tk.END, code['legend'])

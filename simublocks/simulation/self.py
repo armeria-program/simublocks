@@ -35,8 +35,9 @@ class Self(simulationTools):
             't': np.arange(0,tf+T,T),
             'T': T,
             'inputs': {},
-            'blocks': {},
-            'functions': {}
+            'systems': {},
+            'functions': {},
+            'sums': {}
         }
 
         try:
@@ -87,24 +88,43 @@ class Self(simulationTools):
         # Simulation
 
         for k in range(len(s['t']) -1):
-            for i in s['blocks']:
-                b = s['blocks'][i]
+            
+            for i in s['systems']:
+                b = s['systems'][i]
+                
                 if 'otherblock' in b.conn[0]:
                     first = b.conn[0]['otherblock']
-                    b.u[k] = self.search(first, k)
+                    _input = self.search(first, k)
                 else:
-                    b.u[k] = 0
-                b.x[k+1] = b.ss[0]@b.x[k] + b.ss[1]*b.u[k]
+                    _input = 0
+                b.x[k+1] = b.ss[0]@b.x[k] + b.ss[1]*_input
+                b.y[k] = b.ss[2]@b.x[k] + b.ss[3]*_input
 
             for i in s['functions']:
-                func = s['functions'][i]
-                if 'otherblock' in func.conn[0]:
-                    first = func.conn[0]['otherblock']
-                    func.input[k] = self.search(first, k)
-                else:
-                    func.input[k] = 0
-                func.output[k] = func.func(func.input[k])
+                b = s['functions'][i]
+                if np.isnan(b.y[k]):
+                    if 'otherblock' in b.conn[0]:
+                        first = b.conn[0]['otherblock']
+                        _input = self.search(first, k)
+                    else:
+                        _input = 0
+                    b.y[k] = b.func(_input)
 
+            for i in s['sums']:
+                b = s['sums'][i]
+                if np.isnan(b.y[k]):
+                    soma = 0
+                    if 'otherblock' in other.conn[0]:
+                        next0 = other.conn[0]['otherblock']
+                        if other.code[0] == "+":  soma += self.search(next0, k)
+                        else:  soma-= self.search(next0, k)
+                    
+                    if 'otherblock' in other.conn[2]:
+                        next2 = other.conn[2]['otherblock']
+                        if other.code[1] == "+": soma += self.search(next2, k)
+                        else: soma-= self.search(next2, k)
+
+                    b.y[k] = soma
                 
         Plot.run(s)
         

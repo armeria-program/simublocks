@@ -65,7 +65,7 @@ class MenuBar():
         new.add_command(label="State Space",
             command=lambda: self.createNewSystem("SS"))
         new.add_command(label="Sum",
-            command=lambda: Workspace.createBlock("Sum","sum"))
+            command=lambda: Workspace.createBlock("Sum" + str(Workspace.id +1),"sum"))
         new.add_command(label="Corner",
             command=lambda:self.createCorner())
         new.add_command(label="Plot Graph",

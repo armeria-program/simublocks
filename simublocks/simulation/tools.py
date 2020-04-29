@@ -35,9 +35,13 @@ class simulationTools:
                 i.input = np.zeros(len(s['t']))
                 s['inputs'][i.id] = i
             elif i.type == "function":
-                i.input = np.zeros(len(s['t']))
-                i.output = np.zeros(len(s['t']))
+                i.y = np.zeros(len(s['t']))
+                i.y.fill(np.nan)
                 s['functions'][i.id] = i
+            elif i.type == "sum":
+                i.y = np.zeros(len(s['t']))
+                i.y.fill(np.nan)
+                s['sums'][i.id] = i
             elif i.type == 'system':
                 if i.code['type'] == "TF":
                     if i.code['sub_type'] == "continuous":
@@ -87,12 +91,27 @@ class simulationTools:
                 lt = len(s['t'])
                 lA = len(i.ss[0])
                 i.x = np.zeros((lt,lA,1))  
-                i.u = np.zeros((lt,1,1))   
-                s['blocks'][i.id] = i
+                i.y = np.zeros(lt)
+                i.y.fill(np.nan)  
+                s['systems'][i.id] = i
                 
         return s
 
     def search(self, other, k):
+
+        if other.type == "corner":
+            if 'otherblock' in other.conn[0]:
+                next = other.conn[0]['otherblock']
+                return self.search(next, k)
+            else:
+                return 0
+
+        if other.type == "input":
+            return other.input[k]
+
+        if not np.isnan(other.y[k]):
+            return other.y[k]
+
         if other.type == "sum":
             soma = 0
             
@@ -106,25 +125,18 @@ class simulationTools:
                 if other.code[1] == "+": soma += self.search(next2, k)
                 else: soma-= self.search(next2, k)
             
-            return  soma
-        
-        elif other.type == "corner":
-            if 'otherblock' in other.conn[0]:
-                next = other.conn[0]['otherblock']
-                return self.search(next, k)
-            else:
-                return 0
-        
-        elif other.type == "input":
-            return other.input[k]
+            other.y[k] = soma
+            return other.y[k]
         
         elif other.type == "system":
             if other.ss[3] == 0 or 'otherblock' not in other.conn[0]:
-                return (other.ss[2]@other.x[k])[0][0]
+                other.y[k] = (other.ss[2]@other.x[k])[0][0]
+                return other.y[k]
             else:
                 next = other.conn[0]['otherblock']
-                _value = self.search(next,k)
-                return (other.ss[2]@other.x[k] + other.ss[3]*_value)[0][0]
+                _input = self.search(next,k)
+                other.y[k] = (other.ss[2]@other.x[k] + other.ss[3]*_input)[0][0]
+                return other.y[k]
 
         elif other.type == "function":
             if 'otherblock' in other.conn[0]:
@@ -132,4 +144,5 @@ class simulationTools:
                 _value = self.search(first, k)
             else:
                 _value = 0
-            return other.func(_value)
+            other.y[k] = other.func(_value)
+            return other.y[k]

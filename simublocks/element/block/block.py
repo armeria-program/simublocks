@@ -36,5 +36,5 @@ class Block(blockTools):
         self.self = canvas.create_rectangle(self.coords,fill="white")
         self.text = canvas.create_text((
             (self.coords[2] - self.coords[0])/2 + self.coords[0],
-            self.coords[1]  + 15,
+            self.coords[1]  + 11,
         ), text=text)

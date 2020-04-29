@@ -3,7 +3,7 @@ closedloop = {
     "importCode": "",
     "blocks": {
         "1": {
-            "name": "Sum",
+            "name": "Sum1",
             "type": "sum",
             "conn": [
                 {
@@ -38,7 +38,7 @@ closedloop = {
             "type": "system",
             "conn": [
                 {
-                    "otherblock": "Sum",
+                    "otherblock": "Sum2",
                     "otherblock_n_arc": 1,
                     "otherblock_id": 7
                 },
@@ -128,7 +128,7 @@ closedloop = {
                     "otherblock_id": 3
                 },
                 {
-                    "otherblock": "Sum",
+                    "otherblock": "Sum1",
                     "otherblock_n_arc": 2,
                     "otherblock_id": 1
                 },
@@ -150,12 +150,12 @@ closedloop = {
             "type": "system",
             "conn": [
                 {
-                    "otherblock": "Sum",
+                    "otherblock": "Sum1",
                     "otherblock_n_arc": 1,
                     "otherblock_id": 1
                 },
                 {
-                    "otherblock": "Sum",
+                    "otherblock": "Sum2",
                     "otherblock_n_arc": 0,
                     "otherblock_id": 7
                 },
@@ -179,7 +179,7 @@ closedloop = {
             ]
         },
         "7": {
-            "name": "Sum",
+            "name": "Sum2",
             "type": "sum",
             "conn": [
                 {
@@ -219,7 +219,7 @@ closedloop = {
                     "otherblock_id": 10
                 },
                 {
-                    "otherblock": "Sum",
+                    "otherblock": "Sum2",
                     "otherblock_n_arc": 2,
                     "otherblock_id": 7
                 },
@@ -242,7 +242,7 @@ closedloop = {
             "conn": [
                 {},
                 {
-                    "otherblock": "Sum",
+                    "otherblock": "Sum1",
                     "otherblock_n_arc": 0,
                     "otherblock_id": 1
                 },
@@ -288,25 +288,22 @@ closedloop = {
             ],
             "code": [
                 {
-                    "name": "Sys (TF)",
-                    "type": "system",
-                    "subtype": "input",
-                    "legend": "disturbed control signal",
-                    "color": "r",
-                    "check": True
-                },
-                {
                     "name": "PI (SS)",
                     "type": "system",
-                    "subtype": "output",
                     "legend": "PI control signal",
                     "color": "b--",
                     "check": True
                 },
                 {
+                    "name": "Sum2",
+                    "type": "sum",
+                    "legend": "disturbed control signal",
+                    "color": "r",
+                    "check": True
+                },
+                {
                     "name": "Disturbance",
                     "type": "input",
-                    "subtype": "output",
                     "legend": "disturbance signal",
                     "color": "k",
                     "check": True
@@ -329,25 +326,22 @@ closedloop = {
             ],
             "code": [
                 {
-                    "name": "Sys (TF)",
-                    "type": "system",
-                    "subtype": "output",
-                    "legend": "output",
+                    "name": "Sum1",
+                    "type": "sum",
+                    "legend": "error",
                     "color": "",
                     "check": True
                 },
                 {
-                    "name": "PI (SS)",
+                    "name": "Sys (TF)",
                     "type": "system",
-                    "subtype": "input",
-                    "legend": "error",
+                    "legend": "output",
                     "color": "",
                     "check": True
                 },
                 {
                     "name": "SetPoint",
                     "type": "input",
-                    "subtype": "output",
                     "legend": "setpoint",
                     "color": "k--",
                     "check": True
