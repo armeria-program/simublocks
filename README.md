@@ -15,6 +15,9 @@ Download and run simublocks
     pip3 install simublocks
     simublocks
 
+If a new version is available, upgrade simublocks with
+
+    pip3 install simublocks --upgrade
 
 ## Screenshots
 
