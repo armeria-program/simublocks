@@ -27,7 +27,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name = 'simublocks',
-    version = '1.1.5',
+    version = '1.1.7',
     description = 'Python Simulation Blocks for Dynamic Systems',
     author = 'Anderson Vitor Bento',
     author_email = 'bentoavb@gmail.com',
@@ -35,7 +35,9 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/bentoavb/simublocks",
     packages=setuptools.find_packages(),
-    scripts=['bin/simublocks'],
+    entry_points = {
+        'console_scripts': ['simublocks=simublocks.simublocks:main'],
+    },
     install_requires=[            
         'numpy',
         'scipy',
