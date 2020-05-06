@@ -38,7 +38,7 @@ class MenuBar():
         menu.add_cascade(label="Add Blocks",menu=self.menuBlocks(menu))
         menu.add_cascade(label="Examples",menu=self.menuExamples(menu))
         menu.add_cascade(label="Other",menu=self.menuExecute(menu))
-        menu.add_command(label="Run Simulation", command=SimulationFunc.execute)
+        menu.add_cascade(label="Simulation", menu=self.menuSimulation(menu))
 
     def menuFile(self,menu):
         new = tk.Menu(menu)
@@ -46,6 +46,11 @@ class MenuBar():
         new.add_command(label="Open File",command=FileApp.open)
         new.add_command(label="Save File",command=FileApp.save)
         new.add_command(label="Quit",command=self.exit)
+        return new
+
+    def menuSimulation(self,menu):
+        new = tk.Menu(menu)
+        new.add_command(label="Run",command=SimulationFunc.execute)
         return new
 
     def menuExamples(self,menu):
